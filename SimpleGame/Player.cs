@@ -9,7 +9,6 @@ namespace SimpleGame
 	[Serializable]
 	public class Player : Warrior, ISerializable
 	{
-		private int level;
 		private int xp;
 		private int nextlevel;
 		private int gold;
@@ -18,40 +17,42 @@ namespace SimpleGame
 
 		private List<Item> inventory = new List<Item>();
 
-		public Player(string name)
+		public Player(string name, int hp, int level, int nextlevel, int xp, int accuracy, int strength, int speed, int gold, List<Item> inventory, Weapon weapon, Armour armour)
 		{
 			this.name = name;
-			this.hp = this.maxhp = 10;
-			this.level = 1;
-			this.nextlevel = 100;
-			this.xp = 0;
-			this.accuracy = 80;
-			this.damage = 3;
-			this.speed = 7;
-			this.gold = 1011;
-			this.alive = true;
+			this.hp = this.maxhp = hp;
+			this.level = level;
+			this.nextlevel = nextlevel;
+			this.xp = xp;
+			this.accuracy = accuracy;
+			this.strength = strength;
+			this.speed = speed;
+			this.gold = gold;
 
-			this.inventory.Add(ItemGenerator.CreateItem(7));
-			this.equippedweapon = (Weapon)ItemGenerator.CreateItem(-1);
-			this.equippedarmour = (Armour)ItemGenerator.CreateItem(-2);
+			this.inventory = inventory;
+			this.equippedweapon = weapon;
+			this.equippedarmour = armour;
 		}
 
 		public Player(SerializationInfo info, StreamingContext ctxt)
 		{
-			this.name = (string)info.GetValue("name", typeof(int));
+			this.name = (string)info.GetValue("name", typeof(string));
 			this.hp = this.maxhp = (int)info.GetValue("maxhp", typeof(int));
 			this.level = (int)info.GetValue("level", typeof(int));
 			this.nextlevel = (int)info.GetValue("nextlevel", typeof(int));
 			this.xp = (int)info.GetValue("xp", typeof(int));
 			this.accuracy = (int)info.GetValue("accuracy", typeof(int));
-			this.damage = (int)info.GetValue("damage", typeof(int));
+			this.strength = (int)info.GetValue("strength", typeof(int));
 			this.speed = (int)info.GetValue("speed", typeof(int));
 			this.gold = (int)info.GetValue("gold", typeof(int));
-			this.alive = (bool)info.GetValue("alive", typeof(bool));
 
 			this.inventory = (List<Item>)info.GetValue("inventory", typeof(List<Item>));
-			this.equippedweapon = (Weapon)info.GetValue("weapon", typeof(Weapon));
-			this.equippedarmour = (Armour)info.GetValue("armour", typeof(Armour));
+			this.equippedweapon= (Weapon)info.GetValue("weapon", typeof(Weapon));
+			this.equippedarmour= (Armour)info.GetValue("armour", typeof(Armour));
+		}
+
+		public Player()
+		{
 		}
 
 		public bool PlayerHasItem(int itemid)
@@ -88,7 +89,7 @@ namespace SimpleGame
 
 		public int Damage
 		{
-			get { return damage; }
+			get { return strength; }
 		}
 
 		public int ArmourProtection
@@ -146,7 +147,7 @@ namespace SimpleGame
 
 		public void Resurrect(int cost)
 		{
-			this.alive = true;
+			this.hp = this.maxhp;
 			if (this.gold >= cost)
 			{
 				this.gold -= cost;
@@ -165,10 +166,9 @@ namespace SimpleGame
 			info.AddValue("nextlevel", this.nextlevel);
 			info.AddValue("xp", this.xp);
 			info.AddValue("accuracy", this.accuracy);
-			info.AddValue("damage", this.damage);
+			info.AddValue("strength", this.strength);
 			info.AddValue("speed", this.speed);
 			info.AddValue("gold", this.gold);
-			info.AddValue("alive", this.alive);
 
 			info.AddValue("inventory", this.inventory);
 			info.AddValue("weapon", this.equippedweapon);

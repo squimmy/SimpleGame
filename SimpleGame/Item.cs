@@ -26,6 +26,16 @@ namespace SimpleGame
 			this.value = int.Parse(ItemStats.GetStat(itemid, "value"));
 			this.type = this.setItemType(itemid);
 		}
+		
+		public Item(SerializationInfo info, StreamingContext ctxt)
+		{
+			this.id = (int)info.GetValue("id", typeof(int));
+			this.name = (string)info.GetValue("name", typeof(string));
+			this.value = (int)info.GetValue("value", typeof(int));
+			this.weight = (int)info.GetValue("weight", typeof(int));
+			this.type = (ItemType)info.GetValue("type", typeof(ItemType));
+			this.picture = (System.Drawing.Image)info.GetValue("picture", typeof(System.Drawing.Image));
+		}
 
 		protected ItemType setItemType(int itemid)
 		{
@@ -42,7 +52,7 @@ namespace SimpleGame
 			}
 		}
 
-		virtual public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+		public virtual void GetObjectData(SerializationInfo info, StreamingContext ctxt)
 		{
 			info.AddValue("id", this.id);
 			info.AddValue("name", this.name);

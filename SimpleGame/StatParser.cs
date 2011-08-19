@@ -24,5 +24,20 @@ namespace SimpleGame
 			}
 			return "0";
 		}
+
+		public static bool IDExists(int entityid, string statsfile)
+		{
+			System.IO.StringReader entitystats = new System.IO.StringReader(statsfile);
+			System.Xml.XmlReader xmlReader = System.Xml.XmlReader.Create(entitystats);
+			string idtag = "id" + entityid.ToString();
+			while (xmlReader.Read())
+			{
+				if (xmlReader.NodeType == System.Xml.XmlNodeType.Element && xmlReader.Name == idtag)
+				{
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }

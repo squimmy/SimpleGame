@@ -9,9 +9,27 @@ namespace SimpleGame
 	{
 		private static Random rnd = new Random();
 
+		private static List<List<int>> monsterLevels = new List<List<int>>();
+		
+
+
+		public static void generateMonsterList()
+		{
+			for (int i = 0; i < 20; i++)
+			{
+				monsterLevels.Add(new List<int>());
+			}
+			for (int i = 0; MonsterStats.MonsterExists(i); i++)
+			{
+				int level = int.Parse(MonsterStats.GetStat(i, "level"));
+				monsterLevels[level].Add(i);
+			}
+		}
+
 		public static int ChooseMonster(int playerlevel)
 		{
-			return RandomNumber(playerlevel - 1, playerlevel + 1);
+			int enemylevel = RandomNumber(playerlevel - 1, playerlevel + 1);
+			return monsterLevels[enemylevel][RandomNumber(monsterLevels[enemylevel].Count-1)];
 		}
 
 		public static int RandomNumber(int minimum, int maximum)

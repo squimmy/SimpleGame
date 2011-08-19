@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SimpleGame
 {
@@ -9,19 +12,41 @@ namespace SimpleGame
 	{
 		public static bool GameInProgress = false;
 
-		public static void StartGame(string name)
-	{
-		Player player = new Player(name);
-		GameInProgress = true;
-	}
+		public static Player StartGame(string name)
+		{
+			List<Item> inventory = new List<Item>();
+			inventory.Add(ItemGenerator.CreateItem(7));
+			Weapon weapon = (Weapon)ItemGenerator.CreateItem(-1);
+			Armour armour = (Armour)ItemGenerator.CreateItem(-2);
+			Player player = new Player(name, 10, 1, 100, 0, 80, 3, 7, 1001, inventory, weapon, armour);
+			GameInProgress = true;
+			return player;
+		}
 
-	public static string RandomName()
-	{
-		return "Bob";
-	}
+		public static string RandomName()
+		{
+			return "Bob";
+		}
+
+		public static void SaveGame(Player player, string path)
+		{
+			Stream stream = File.Open(path, FileMode.Create);
+			BinaryFormatter formatter = new BinaryFormatter();
+			formatter.Serialize(stream, player);
+			stream.Close();
+		}
+
+		public static Player LoadGame(string path)
+		{
+			Stream stream = File.Open(path, FileMode.Open);
+			BinaryFormatter formatter = new BinaryFormatter();
+
+			Player player = (Player)formatter.Deserialize(stream);
 
 
-
-
+		//	Player player = new Player(name, hp, level, nextlevel, xp, accuracy, strength, speed, gold, inventory, weapon, armour);
+ 
+			return player;
+		}
 	}
 }

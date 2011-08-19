@@ -17,15 +17,14 @@ namespace SimpleGame
 			this.picture = SimpleGame.Properties.Resources.weapon_image;
 		}
 
-		public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+		public Weapon(SerializationInfo info, StreamingContext ctxt): base(info, ctxt)
 		{
-			info.AddValue("id", this.id);
-			info.AddValue("name", this.name);
-			info.AddValue("value", this.value);
-			info.AddValue("weight", this.weight);
-			info.AddValue("type", this.type);
-			info.AddValue("picture", this.picture);
+			this.damage = (int)info.GetValue("damage", typeof(int));
+		}
 
+		public override void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+		{
+			base.GetObjectData(info, ctxt);
 			info.AddValue("damage", this.damage);
 		}
 

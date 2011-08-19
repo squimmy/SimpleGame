@@ -34,13 +34,14 @@
 			this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.NewGamePicture = new System.Windows.Forms.PictureBox();
+			this.LoadGamePicture = new System.Windows.Forms.PictureBox();
 			this.QuitButton = new System.Windows.Forms.PictureBox();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.menuStrip1.SuspendLayout();
 			this.tableLayoutPanel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.NewGamePicture)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.LoadGamePicture)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.QuitButton)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -89,8 +90,8 @@
 			this.tableLayoutPanel1.ColumnCount = 1;
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
 			this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-			this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
-			this.tableLayoutPanel1.Controls.Add(this.pictureBox2, 0, 1);
+			this.tableLayoutPanel1.Controls.Add(this.NewGamePicture, 0, 0);
+			this.tableLayoutPanel1.Controls.Add(this.LoadGamePicture, 0, 1);
 			this.tableLayoutPanel1.Controls.Add(this.QuitButton, 0, 2);
 			this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
@@ -102,26 +103,27 @@
 			this.tableLayoutPanel1.Size = new System.Drawing.Size(173, 317);
 			this.tableLayoutPanel1.TabIndex = 3;
 			// 
-			// pictureBox1
+			// NewGamePicture
 			// 
-			this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.pictureBox1.Image = global::SimpleGame.Properties.Resources.new_image;
-			this.pictureBox1.Location = new System.Drawing.Point(21, 12);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(130, 80);
-			this.pictureBox1.TabIndex = 0;
-			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+			this.NewGamePicture.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.NewGamePicture.Image = global::SimpleGame.Properties.Resources.new_image;
+			this.NewGamePicture.Location = new System.Drawing.Point(21, 12);
+			this.NewGamePicture.Name = "NewGamePicture";
+			this.NewGamePicture.Size = new System.Drawing.Size(130, 80);
+			this.NewGamePicture.TabIndex = 0;
+			this.NewGamePicture.TabStop = false;
+			this.NewGamePicture.Click += new System.EventHandler(this.NewGamePicture_Click);
 			// 
-			// pictureBox2
+			// LoadGamePicture
 			// 
-			this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
-			this.pictureBox2.Image = global::SimpleGame.Properties.Resources.load_image;
-			this.pictureBox2.Location = new System.Drawing.Point(21, 117);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(130, 80);
-			this.pictureBox2.TabIndex = 1;
-			this.pictureBox2.TabStop = false;
+			this.LoadGamePicture.Anchor = System.Windows.Forms.AnchorStyles.None;
+			this.LoadGamePicture.Image = global::SimpleGame.Properties.Resources.load_image;
+			this.LoadGamePicture.Location = new System.Drawing.Point(21, 117);
+			this.LoadGamePicture.Name = "LoadGamePicture";
+			this.LoadGamePicture.Size = new System.Drawing.Size(130, 80);
+			this.LoadGamePicture.TabIndex = 1;
+			this.LoadGamePicture.TabStop = false;
+			this.LoadGamePicture.Click += new System.EventHandler(this.LoadGamePicture_Click);
 			// 
 			// QuitButton
 			// 
@@ -133,6 +135,10 @@
 			this.QuitButton.TabIndex = 2;
 			this.QuitButton.TabStop = false;
 			this.QuitButton.Click += new System.EventHandler(this.QuitButton_Click);
+			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.FileName = "openFileDialog1";
 			// 
 			// MainMenu
 			// 
@@ -148,8 +154,8 @@
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.tableLayoutPanel1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.NewGamePicture)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.LoadGamePicture)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.QuitButton)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -164,8 +170,9 @@
 		private System.Windows.Forms.ToolStripMenuItem saveGameToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
 		private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.PictureBox NewGamePicture;
+		private System.Windows.Forms.PictureBox LoadGamePicture;
 		private System.Windows.Forms.PictureBox QuitButton;
+		private System.Windows.Forms.OpenFileDialog openFileDialog;
 	}
 }

@@ -52,6 +52,7 @@
 			// cancelButton
 			// 
 			this.cancelButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+			this.cancelButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
 			this.cancelButton.Location = new System.Drawing.Point(189, 235);
 			this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 3, 20, 3);
 			this.cancelButton.Name = "cancelButton";

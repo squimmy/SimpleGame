@@ -22,18 +22,22 @@ namespace SimpleGame
 			this.count = 1;
 		}
 
-
-		public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+		public Consumable(SerializationInfo info, StreamingContext ctxt): base(info, ctxt)
 		{
-			info.AddValue("id", this.id);
-			info.AddValue("name", this.name);
-			info.AddValue("value", this.value);
-			info.AddValue("weight", this.weight);
-			info.AddValue("type", this.type);
-			info.AddValue("picture", this.picture);
+			this.consumabletype = (ConsumableType)info.GetValue("consumabletype", typeof(ConsumableType));
+			this.effectiveness = (int)info.GetValue("effectiveness", typeof(int));
+			this.count = (int)info.GetValue("count", typeof(int));
+		}
+
+
+
+		public override void GetObjectData(SerializationInfo info, StreamingContext ctxt)
+		{
+			base.GetObjectData(info, ctxt);
 
 			info.AddValue("consumabletype", this.consumabletype);
 			info.AddValue("effectiveness", this.effectiveness);
+			info.AddValue("count", this.count);
 		}
 
 

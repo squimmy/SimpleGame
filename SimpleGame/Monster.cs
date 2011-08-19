@@ -14,13 +14,13 @@ namespace SimpleGame
 
 		public Monster(int monsterid)
 		{
-			this.alive = true;
 			this.name = MonsterStats.GetStat(monsterid, "name");
+			this.level = int.Parse(MonsterStats.GetStat(monsterid, "level"));
 			this.hp = this.maxhp = int.Parse(MonsterStats.GetStat(monsterid, "hp"));
 			this.xpreward = int.Parse(MonsterStats.GetStat(monsterid, "xp"));
 			this.goldreward = int.Parse(MonsterStats.GetStat(monsterid, "gold"));
 			this.accuracy = int.Parse(MonsterStats.GetStat(monsterid, "accuracy"));
-			this.damage = int.Parse(MonsterStats.GetStat(monsterid, "damage"));
+			this.strength = int.Parse(MonsterStats.GetStat(monsterid, "damage"));
 			this.speed = int.Parse(MonsterStats.GetStat(monsterid, "speed"));
 			this.picture = SimpleGame.Properties.Resources.rabbit_image;
 		}

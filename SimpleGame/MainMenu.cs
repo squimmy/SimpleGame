@@ -14,17 +14,18 @@ namespace SimpleGame
 		public MainMenu()
 		{
 			InitializeComponent();
+			Fighting.generateMonsterList();
 		}
 
 
-		private void pictureBox1_Click(object sender, EventArgs e)
+		private void NewGamePicture_Click(object sender, EventArgs e)
 		{
-			newgame();
+			this.newgame();
 		}
 
 		private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			newgame();
+			this.newgame();
 		}
 
 		private void newgame()
@@ -32,12 +33,22 @@ namespace SimpleGame
 			NewGame window = new NewGame();
 			if (window.ShowDialog(this) == DialogResult.OK)
 			{
-				GameMenu game = new GameMenu(window.CharacterNameTextBox());
+				GameMenu game = new GameMenu(Game.StartGame(window.CharacterNameTextBox()));
 				this.Hide();
 				game.Show();
 			}
 		}
 
+		private void LoadGamePicture_Click(object sender, EventArgs e)
+		{
+			if (openFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				GameMenu game = new GameMenu(Game.LoadGame(openFileDialog.FileName));
+				this.Hide();
+				game.Show();
+			}
+		}
+		
 		private void QuitButton_Click(object sender, EventArgs e)
 		{
 			Environment.Exit(0);
@@ -47,5 +58,6 @@ namespace SimpleGame
 		{
 			Environment.Exit(0);
 		}
+
 	}
 }

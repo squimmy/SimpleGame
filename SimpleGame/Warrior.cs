@@ -9,9 +9,9 @@ namespace SimpleGame
 	{
 		protected int hp;
 		protected int maxhp;
+		protected int level;
 		protected int accuracy;
-		protected int damage;
-		protected bool alive;
+		protected int strength;
 		protected string name;
 		protected int speed;
 		protected int temporarydamagebonus;
@@ -41,11 +41,6 @@ namespace SimpleGame
 				{
 					hp = maxhp;
 				}
-				else if (value <= 0)
-				{
-					die();
-					hp = value;
-				}
 				else
 				{
 					hp = value;
@@ -64,7 +59,7 @@ namespace SimpleGame
 		virtual public int Damage
 		{
 			get
-			{ return damage; }
+			{ return strength; }
 		}
 
 		public string HPText
@@ -75,14 +70,19 @@ namespace SimpleGame
 			}
 		}
 
-		public void die()
-		{
-			this.alive = false;
-		}
-
 		public bool Alive
 		{
-			get { return alive; }
+			get
+			{
+				if (this.hp >= 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
 		}
 
 		public int TemporaryDamageBonus

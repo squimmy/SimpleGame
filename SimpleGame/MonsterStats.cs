@@ -22,5 +22,10 @@ namespace SimpleGame
 					return SimpleGame.Properties.Resources.mystery_monster_image;
 			}
 		}
+
+		public static bool MonsterExists(int monsterid)
+		{
+			return StatParser.IDExists(monsterid, SimpleGame.Properties.Resources.monsters);
+		}
 	}
 }

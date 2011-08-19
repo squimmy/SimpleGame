@@ -16,15 +16,11 @@ namespace SimpleGame
 
 		Player player;	
 
-		public GameMenu(string name)
+		public GameMenu(Player player)
 		{
 			InitializeComponent();
-			player = new Player(name);
-			this.NameLabel.Text = player.Name;
-			this.XPLabel.Text = player.XPText;
-			this.HPLabel.Text = player.HPText;
-			this.LevelLabel.Text = player.Level.ToString();
-			this.GoldLabel.Text = player.Gold.ToString();
+			this.player = player;
+			this.UpdateText();
 		}
 
 		private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -32,11 +28,8 @@ namespace SimpleGame
 			NewGame window = new NewGame();
 			if (window.ShowDialog(this) == DialogResult.OK)
 			{
-				this.player = new Player(window.CharacterNameTextBox());
-				this.NameLabel.Text = player.Name;
-				this.XPLabel.Text = player.XPText;
-				this.HPLabel.Text = player.HPText;
-				this.LevelLabel.Text = player.Level.ToString();
+				this.player = Game.StartGame(window.CharacterNameTextBox());
+				this.UpdateText();
 			}
 		}
 
@@ -74,6 +67,8 @@ namespace SimpleGame
 
 		private void UpdateText()
 		{
+
+			this.NameLabel.Text = player.Name;
 			this.XPLabel.Text = player.XPText;
 			this.HPLabel.Text = player.HPText;
 			this.LevelLabel.Text = player.Level.ToString();
@@ -84,7 +79,7 @@ namespace SimpleGame
 		{
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				Save.SaveGame(player, saveFileDialog.FileName);
+				Game.SaveGame(player, saveFileDialog.FileName);
 			}
 		}
 

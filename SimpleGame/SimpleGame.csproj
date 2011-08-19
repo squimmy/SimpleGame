@@ -117,7 +117,6 @@
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Save.cs" />
     <Compile Include="ShopMenu.cs">
       <SubType>Form</SubType>
     </Compile>
