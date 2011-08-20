@@ -7,7 +7,7 @@ using System.Runtime.Serialization;
 namespace SimpleGame
 {
 	[Serializable]
-	class Consumable : Item, ISerializable
+	public class Consumable : Item, ISerializable
 	{
 		private int count;
 		public enum ConsumableType { HealthPotion, StrengthPotion, SpeedPotion, None };
@@ -56,8 +56,7 @@ namespace SimpleGame
 		{
 			get { return effectiveness; }
 		}
-
-
+		
 		private ConsumableType setConsumableType(int itemid)
 		{
 			switch (ItemStats.GetStat(itemid, "consumabletype"))

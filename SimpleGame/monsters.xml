@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <monsters>
   <id0 name="fluffy bunny" level="0" hp="3" xp="5" gold="0" accuracy="60" damage="1" speed="5" image="rabbit_image"/>
-  <id1 name="landwhale" level="2" hp="20" xp="10" gold="20" damage="4" accuracy="40" speed="3" image="landwhale_image"/>
-  <id2 name="archaeopteryx" level="1" hp="5" xp="10" gold="10" damage="3" accuracy="70" speed="9" image="archaeopteryx_image"/>
-  <id3 name="burning bush" level="1" hp="10" xp="10" gold="15" damage="6" accuracy="20" speed="1" image="bush_image"/>
+  <id1 name="landwhale" level="2" hp="20" xp="10" gold="20" damage="4" accuracy="40" speed="4" image="landwhale_image"/>
+  <id2 name="archaeopteryx" level="1" hp="5" xp="10" gold="10" damage="3" accuracy="70" speed="11" image="archaeopteryx_image"/>
+  <id3 name="burning bush" level="1" hp="10" xp="10" gold="15" damage="6" accuracy="20" speed="4" image="bush_image"/>
 </monsters>

@@ -72,17 +72,7 @@ namespace SimpleGame
 
 		public bool Alive
 		{
-			get
-			{
-				if (this.hp >= 0)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
+			get { return this.hp > 0; }
 		}
 
 		public int TemporaryDamageBonus

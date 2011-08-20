@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <items>
-  <id0 name="None" weight="0" value="0" type="none"/>
-  <id1 name="Dagger" weight="1" value="1" type="weapon" damage="1"/>
-  <id2 name="Shortsword" weight="3" value="4" type="weapon" damage="2"/>
-  <id3 name="Longsword" weight="5" value="10" type="weapon" damage="3"/>
-  <id4 name="Leather" weight="10" value="2" type="armour" protection="1"/>
-  <id5 name="Chainmail" weight="25" value="6" type="armour" protection="2"/>
-  <id6 name="Platemail" weight="50" value="15" type="armour" protection="3"/>
-  <id7 name="Healing Potion" weight="1" value="2" type="consumable" consumabletype="HealthPotion" effectiveness="25"/>
-  <id8 name="Strength Potion" weight="1" value="12" type="consumable" consumabletype="StrengthPotion" effectiveness="2"/>
-  <id-1 name="No Weapon" weight="0" value="0" type="weapon" damage="0"/>
-  <id-2 name="No Armour" weight="0" value="0" type="armour" protection="0"/>
+  <id0 name="None" weight="0" value="0" type="none" speed="0"/>
+  <id1 name="Dagger" weight="1" value="1" type="weapon" damage="1" speed="1"/>
+  <id2 name="Shortsword" weight="3" value="4" type="weapon" damage="2" speed="0"/>
+  <id3 name="Longsword" weight="5" value="10" type="weapon" damage="3" speed="-1"/>
+  <id4 name="Leather" weight="10" value="2" type="armour" protection="1" speed="0"/>
+  <id5 name="Chainmail" weight="25" value="6" type="armour" protection="2" speed="0"/>
+  <id6 name="Platemail" weight="50" value="15" type="armour" protection="3" speed="0"/>
+  <id7 name="Healing Potion" weight="1" value="2" type="consumable" consumabletype="HealthPotion" effectiveness="25" speed="0"/>
+  <id8 name="Strength Potion" weight="1" value="12" type="consumable" consumabletype="StrengthPotion" effectiveness="2" speed="0"/>
+  <id-1 name="No Weapon" weight="0" value="0" type="weapon" damage="0" speed="0"/>
+  <id-2 name="No Armour" weight="0" value="0" type="armour" protection="0" speed="0"/>
 </items>

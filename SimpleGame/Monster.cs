@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SimpleGame
 {
-	class Monster : Warrior
+	public class Monster : Warrior
 	{
 
 		private int xpreward;

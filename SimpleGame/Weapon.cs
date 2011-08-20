@@ -10,7 +10,7 @@ namespace SimpleGame
 	public class Weapon : Item, ISerializable
 	{
 		private int damage;
-
+		
 		public Weapon(int itemid): base(itemid)
 		{
 			this.damage = int.Parse(ItemStats.GetStat(itemid, "damage"));

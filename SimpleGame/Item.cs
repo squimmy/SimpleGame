@@ -15,6 +15,7 @@ namespace SimpleGame
 		protected int weight;
 		protected int value;
 		protected int id;
+		protected int speed;
 		protected System.Drawing.Image picture;
 		protected ItemType type;
 
@@ -24,6 +25,7 @@ namespace SimpleGame
 			this.name = ItemStats.GetStat(itemid, "name");
 			this.weight = int.Parse(ItemStats.GetStat(itemid, "weight"));
 			this.value = int.Parse(ItemStats.GetStat(itemid, "value"));
+			this.speed = int.Parse(ItemStats.GetStat(itemid, "speed"));
 			this.type = this.setItemType(itemid);
 		}
 		
@@ -100,6 +102,11 @@ namespace SimpleGame
 		public int Value
 		{
 			get { return value; }
+		}
+
+		public int Speed
+		{
+			get { return this.speed; }
 		}
 
 		public ItemType Type

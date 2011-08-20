@@ -54,7 +54,7 @@ namespace SimpleGame
 		public Player()
 		{
 		}
-
+		
 		public bool PlayerHasItem(int itemid)
 		{
 			foreach (Item item in inventory)
@@ -114,7 +114,6 @@ namespace SimpleGame
 			{
 				if (value >= nextlevel)
 				{
-					levelup();
 					xp = value;
 				}
 				else
@@ -137,8 +136,17 @@ namespace SimpleGame
 				return this.xp.ToString() + "/" + this.nextlevel.ToString();
 			}
 		}
-		
-		private void levelup()
+
+		public bool CanLevelUp()
+		{
+			if (this.xp >= this.nextlevel)
+			{
+				return true;
+			}
+			return false;
+		}
+
+		public void LevelUp()
 		{
 			nextlevel *= 2;
 			level++;
@@ -158,6 +166,11 @@ namespace SimpleGame
 			}
 		}
 
+		public int AttackSpeed
+		{
+			get { return this.speed + this.equippedweapon.Speed; }
+		}
+
 		public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
 		{
 			info.AddValue("name", this.name);
@@ -174,6 +187,5 @@ namespace SimpleGame
 			info.AddValue("weapon", this.equippedweapon);
 			info.AddValue("armour", this.equippedarmour);
 		}
-
 	}
 }
