@@ -2,7 +2,7 @@
 <items>
   <id0 name="None" weight="0" value="0" type="none" speed="0"/>
   <id1 name="Dagger" weight="1" value="1" type="weapon" damage="1" speed="1"/>
-  <id2 name="Shortsword" weight="3" value="4" type="weapon" damage="2" speed="0"/>
+  <id2 name="Shortsword" weight="3" value="4" type="weapon" damage="2"/>
   <id3 name="Longsword" weight="5" value="10" type="weapon" damage="3" speed="-1"/>
   <id4 name="Leather" weight="10" value="2" type="armour" protection="1" speed="0"/>
   <id5 name="Chainmail" weight="25" value="6" type="armour" protection="2" speed="0"/>

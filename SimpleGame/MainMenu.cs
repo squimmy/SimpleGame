@@ -14,7 +14,7 @@ namespace SimpleGame
 		public MainMenu()
 		{
 			InitializeComponent();
-			Fighting.generateMonsterList();
+			Combat.generateMonsterList();
 		}
 
 

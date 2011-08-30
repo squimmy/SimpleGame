@@ -47,7 +47,7 @@ namespace SimpleGame
 			set { count = value; }
 		}
 
-		public ConsumableType Type
+		public ConsumableType TypeOfConsumable
 		{
 			get { return consumabletype; }
 		}

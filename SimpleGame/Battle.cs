@@ -20,34 +20,17 @@ namespace SimpleGame
 		{
 			player = currentplayer;
 			playerTimer = monsterTimer = 0;
-			monster = new Monster(Fighting.ChooseMonster(player.Level));
+			monster = new Monster(Combat.ChooseMonster(player.Level));
 			nextAction = CombatAction.Attack;
 			nextActionItem = player.EquippedWeapon;
+			player.Target = monster;
+			monster.Target = player;
 		}
 
 		public void PlayerAttack()
 		{
-			if (player.Alive)
-			{
-				if (player.Hit)
-				{
-					int damage = Fighting.RandomNumber(player.Damage + player.EquippedWeapon.Damage + player.TemporaryDamageBonus);
-
-					if (damage > 0)
-					{
-						monster.HP -= damage;
-						this.combatlog = ("You hit the " + monster.Name + " and dealt " + damage.ToString() + " damage!" + System.Environment.NewLine + this.combatlog);
-					}
-					else
-					{
-						this.combatlog = ("You hit the " + monster.Name + ", but you didn't deal any damage." + System.Environment.NewLine + this.combatlog);
-					}
-				}
-				else
-				{
-					this.combatlog = ("You missed the " + monster.Name + System.Environment.NewLine + this.combatlog);
-				}
-			}
+			Attack attack = player.AttackTarget();
+			prependToCombatLog(attack.CombatMessage);
 		}
 
 		public void SelectNextAction(CombatAction action, Item itemToUse)
@@ -59,13 +42,13 @@ namespace SimpleGame
 		public void Attack()
 		{
 			SelectNextAction(CombatAction.Attack, player.EquippedWeapon);
-			this.Wait(1000 / player.AttackSpeed);
+			this.Wait(1000 / playerActionSpeed());
 		}
 		
 		public void performItemEffect(Consumable item)
 		{
 
-			switch (item.Type)
+			switch (item.TypeOfConsumable)
 			{
 				case Consumable.ConsumableType.HealthPotion:
 					player.HP += item.Effectiveness;
@@ -94,24 +77,8 @@ namespace SimpleGame
 
 		public void MonsterAttack()
 		{
-			if (monster.Hit)
-			{
-				int damage = Fighting.RandomNumber(monster.Damage);
-
-				if (damage > 0)
-				{
-					player.HP -= damage;
-					this.combatlog = ("The " + monster.Name + " hit you! you took " + damage.ToString() + " damage!" + System.Environment.NewLine + this.combatlog);
-				}
-				else
-				{
-					this.combatlog = ("The " + monster.Name + " hit you, but you didn't take any damage." + System.Environment.NewLine + this.combatlog);
-				}
-			}
-			else
-			{
-				this.combatlog = ("The " + monster.Name + " missed you." + System.Environment.NewLine + this.combatlog);
-			}
+			Attack attack = monster.AttackTarget();
+			prependToCombatLog(attack.CombatMessage);
 		}
 
 		public void InitiateAttack()
@@ -120,12 +87,16 @@ namespace SimpleGame
 
 			if (!monster.Alive)
 			{
-				string congratulations = "Congratulations! You defeated the " + monster.Name + "." + System.Environment.NewLine + "You have gained " + monster.XPReward.ToString() + " experience points";
+				string congratulations = string.Format("Congratulations! You defeated the {0}.", monster.Name) + System.Environment.NewLine + string.Format("You have gained {0} experience points", monster.XPReward.ToString());
 				if (monster.GoldReward > 0)
 				{
-					congratulations += ", and looted " + monster.GoldReward.ToString() + " gold pieces.";
+					congratulations += string.Format(", and looted {0} gold pieces.", monster.GoldReward.ToString());
 				}
-				combatlog = (congratulations + Environment.NewLine + Environment.NewLine + this.combatlog);
+				else
+				{
+					congratulations += ".";
+				}
+				prependToCombatLog(congratulations + Environment.NewLine);
 				player.XP += monster.XPReward;
 				player.Gold += monster.GoldReward;
 			}
@@ -162,9 +133,9 @@ namespace SimpleGame
 
 		public bool TryToRun()
 		{
-			if (StillFighting() && Fighting.MonsterHasInitiative(monster.Speed, player.Speed))
+			if (StillFighting() && Combat.MonsterHasInitiative(monster.Speed, player.Speed))
 			{
-				combatlog = ("The " + monster.Name + " chased you down!" + System.Environment.NewLine + this.combatlog);
+				prependToCombatLog(string.Format("The {0} chased you down!", monster.Name));
 				MonsterAttack();
 				return false;
 			}
@@ -199,7 +170,7 @@ namespace SimpleGame
 			for (int i = 0; i < units; i++)
 			{
 				this.IncrementTime();
-				if (Fighting.RandomNumber(player.Speed) >= Fighting.RandomNumber(monster.Speed))
+				if (Combat.RandomNumber(player.Speed) >= Combat.RandomNumber(monster.Speed))
 				{
 					checkPlayerAction();
 					checkMonsterAttack();
@@ -213,5 +184,9 @@ namespace SimpleGame
 			return;
 		}
 
+		private void prependToCombatLog(string text)
+		{
+			this.combatlog = text + System.Environment.NewLine + this.combatlog;
+		}
 	}
 }

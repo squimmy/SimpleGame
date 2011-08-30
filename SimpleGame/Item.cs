@@ -16,6 +16,9 @@ namespace SimpleGame
 		protected int value;
 		protected int id;
 		protected int speed;
+		protected int speedbonus;
+		protected int strengthbonus;
+		protected int hpbonus;
 		protected System.Drawing.Image picture;
 		protected ItemType type;
 
@@ -26,6 +29,9 @@ namespace SimpleGame
 			this.weight = int.Parse(ItemStats.GetStat(itemid, "weight"));
 			this.value = int.Parse(ItemStats.GetStat(itemid, "value"));
 			this.speed = int.Parse(ItemStats.GetStat(itemid, "speed"));
+			this.speedbonus = int.Parse(ItemStats.GetStat(itemid, "speedbonux"));
+			this.strengthbonus = int.Parse(ItemStats.GetStat(itemid, "strengthbonus"));
+			this.hpbonus = int.Parse(ItemStats.GetStat(itemid, "hpbonus"));
 			this.type = this.setItemType(itemid);
 		}
 		
@@ -107,6 +113,21 @@ namespace SimpleGame
 		public int Speed
 		{
 			get { return this.speed; }
+		}
+
+		public int SpeedBonus
+		{
+			get { return this.speedbonus; }
+		}
+
+		public int StrengthBonus
+		{
+			get { return this.speedbonus; }
+		}
+
+		public int HPBonus
+		{
+			get { return this.speedbonus; }
 		}
 
 		public ItemType Type

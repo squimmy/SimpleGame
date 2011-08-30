@@ -12,6 +12,11 @@ namespace SimpleGame
 		private int xp;
 		private int nextlevel;
 		private int gold;
+		private int basemaxhp;
+		private int basespeed;
+		private int basestrength;
+		private int baseDamageReduction;
+
 		private Weapon equippedweapon;
 		private Armour equippedarmour;
 
@@ -20,30 +25,34 @@ namespace SimpleGame
 		public Player(string name, int hp, int level, int nextlevel, int xp, int accuracy, int strength, int speed, int gold, List<Item> inventory, Weapon weapon, Armour armour)
 		{
 			this.name = name;
-			this.hp = this.maxhp = hp;
+			this.hp = this.basemaxhp = hp;
 			this.level = level;
 			this.nextlevel = nextlevel;
 			this.xp = xp;
 			this.accuracy = accuracy;
-			this.strength = strength;
-			this.speed = speed;
+			this.basestrength = strength;
+			this.basespeed = speed;
 			this.gold = gold;
 
 			this.inventory = inventory;
 			this.equippedweapon = weapon;
 			this.equippedarmour = armour;
+
+			this.baseDamageReduction = 0;
+
+			this.unique = true;
 		}
 
 		public Player(SerializationInfo info, StreamingContext ctxt)
 		{
 			this.name = (string)info.GetValue("name", typeof(string));
-			this.hp = this.maxhp = (int)info.GetValue("maxhp", typeof(int));
+			this.hp = this.basemaxhp = (int)info.GetValue("maxhp", typeof(int));
 			this.level = (int)info.GetValue("level", typeof(int));
 			this.nextlevel = (int)info.GetValue("nextlevel", typeof(int));
 			this.xp = (int)info.GetValue("xp", typeof(int));
 			this.accuracy = (int)info.GetValue("accuracy", typeof(int));
-			this.strength = (int)info.GetValue("strength", typeof(int));
-			this.speed = (int)info.GetValue("speed", typeof(int));
+			this.basestrength = (int)info.GetValue("strength", typeof(int));
+			this.basespeed = (int)info.GetValue("speed", typeof(int));
 			this.gold = (int)info.GetValue("gold", typeof(int));
 
 			this.inventory = (List<Item>)info.GetValue("inventory", typeof(List<Item>));
@@ -54,7 +63,40 @@ namespace SimpleGame
 		public Player()
 		{
 		}
-		
+
+		protected override int maxhp
+		{
+			get { return this.basemaxhp + this.equippedweapon.HPBonus + this.equippedarmour.HPBonus; }
+		}
+		public int BaseMaxHP
+		{
+			get { return this.basemaxhp; }
+		}
+
+		protected override int speed
+		{
+			get { return this.basespeed + this.equippedweapon.SpeedBonus + this.equippedarmour.SpeedBonus; }
+		}
+		public int BaseSpeed
+		{
+			get { return this.basespeed; }
+		}
+
+		protected override int strength
+		{
+			get { return this.basestrength + this.equippedweapon.StrengthBonus + this.equippedarmour.StrengthBonus; }
+		}
+		public int BaseStrength
+		{
+			get { return this.basestrength; }
+		}
+
+
+
+		public List<Item> Inventory
+		{
+			get { return inventory; }
+		}
 		public bool PlayerHasItem(int itemid)
 		{
 			foreach (Item item in inventory)
@@ -66,47 +108,45 @@ namespace SimpleGame
 			}
 			return false;
 		}
-
 		public void EquipWeapon(Weapon weapon)
 		{
 			equippedweapon = weapon;
 		}
-
 		public void EquipArmour(Armour armour)
 		{
 			equippedarmour = armour;
 		}
-
 		public Weapon EquippedWeapon
 		{
 			get { return equippedweapon; }
 		}
-
 		public Armour EquippedArmour
 		{
 			get { return equippedarmour; }
 		}
-
-		public int Damage
+		public int Gold
 		{
-			get { return strength; }
+			get { return gold; }
+			set { gold = value; }
 		}
 
-		public int ArmourProtection
+		protected override int damageReduction
 		{
-			get { return Fighting.RandomNumber(this.equippedarmour.Protection); }
+			get { return this.baseDamageReduction + this.equippedarmour.Protection; }
 		}
-
-		public List<Item> Inventory
+		public int AttackSpeed
 		{
-			get { return inventory; }
+			get { return this.speed + this.equippedweapon.Speed; }
+		}
+		protected override int damage
+		{
+			get { return this.strength + this.temporaryDamageBonus + this.equippedweapon.Damage; }
 		}
 
 		public int Level
 		{
 			get { return level; }
 		}
-
 		public int XP
 		{
 			get { return xp; }
@@ -122,13 +162,6 @@ namespace SimpleGame
 				}
 			}
 		}
-
-		public int Gold
-		{
-			get { return gold; }
-			set { gold = value; }
-		}
-
 		public string XPText
 		{
 			get
@@ -136,21 +169,15 @@ namespace SimpleGame
 				return this.xp.ToString() + "/" + this.nextlevel.ToString();
 			}
 		}
-
 		public bool CanLevelUp()
 		{
-			if (this.xp >= this.nextlevel)
-			{
-				return true;
-			}
-			return false;
+			return this.xp >= this.nextlevel;
 		}
-
 		public void LevelUp()
 		{
 			nextlevel *= 2;
 			level++;
-			maxhp += level * 5;
+			basemaxhp += level * 5;
 		}
 
 		public void Resurrect(int cost)
@@ -165,12 +192,6 @@ namespace SimpleGame
 				this.gold = 0;
 			}
 		}
-
-		public int AttackSpeed
-		{
-			get { return this.speed + this.equippedweapon.Speed; }
-		}
-
 		public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
 		{
 			info.AddValue("name", this.name);

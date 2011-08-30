@@ -9,18 +9,35 @@ namespace SimpleGame
 	{
 		public static string XMLStats(int entityid, string stat, string statsfile)
 		{
-			System.IO.StringReader entitystats = new System.IO.StringReader(statsfile);
-			System.Xml.XmlReader xmlReader = System.Xml.XmlReader.Create(entitystats);
-			string idtag = "id" + entityid.ToString();
-			while (xmlReader.Read())
+			try
 			{
-				if (xmlReader.NodeType == System.Xml.XmlNodeType.Element && xmlReader.Name == idtag)
+				using (System.IO.StringReader entitystats = new System.IO.StringReader(statsfile))
 				{
-					if (xmlReader.HasAttributes)
+					System.Xml.XmlReader xmlReader = System.Xml.XmlReader.Create(entitystats);
+					string idtag = "id" + entityid.ToString();
+					while (xmlReader.Read())
 					{
-						return xmlReader.GetAttribute(stat);
+						if (xmlReader.NodeType == System.Xml.XmlNodeType.Element && xmlReader.Name == idtag)
+						{
+							if (xmlReader.HasAttributes)
+							{
+								string result = xmlReader.GetAttribute(stat);
+								if (result != null)
+								{
+									return result;
+								}
+								else
+								{
+									return "0";
+								}
+							}
+						}
 					}
 				}
+			}
+			catch
+			{
+				return "0";
 			}
 			return "0";
 		}

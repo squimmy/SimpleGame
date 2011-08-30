@@ -23,8 +23,6 @@ namespace SimpleGame
 		private enum Action {Buy, Equip};
 
 		private delegate void actionClickedEventHandler(Item item);
-		private event actionClickedEventHandler actionClicked;
-
 		
 		public ShopMenu(Player player)
 		{

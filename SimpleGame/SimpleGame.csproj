@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Armour.cs" />
+    <Compile Include="Attack.cs" />
     <Compile Include="Battle.cs" />
     <Compile Include="BattleScreen.cs">
       <SubType>Form</SubType>
@@ -89,7 +90,7 @@
       <DependentUpon>CombatInventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Consumable.cs" />
-    <Compile Include="Fighting.cs" />
+    <Compile Include="Combat.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="ItemGenerator.cs" />
     <Compile Include="ItemStats.cs" />

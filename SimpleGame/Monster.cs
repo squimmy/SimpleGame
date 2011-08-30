@@ -23,6 +23,7 @@ namespace SimpleGame
 			this.strength = int.Parse(MonsterStats.GetStat(monsterid, "damage"));
 			this.speed = int.Parse(MonsterStats.GetStat(monsterid, "speed"));
 			this.picture = SimpleGame.Properties.Resources.rabbit_image;
+			this.unique = false;
 		}
 
 		public int XPReward
