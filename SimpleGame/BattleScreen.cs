@@ -27,6 +27,20 @@ namespace SimpleGame
 			this.MonsterPicture.Image = battle.monster.Picture;
 		}
 
+		private void UpdateTextAndPictures()
+		{
+			this.CombatLogTextBox.Text = battle.combatlog;
+			this.MonsterHP.Text = battle.monster.HPText;
+			this.PlayerHP.Text = battle.player.HPText;
+			this.SetHPTextColour();
+			if (!battle.StillFighting())
+			{
+				this.AttackPicture.Image = null;
+				this.AutoPicture.Image = null;
+				this.ItemPicture.Image = null;
+				this.RunPicture.Image = SimpleGame.Properties.Resources.leave_image;
+			}
+		}
 		private void SetHPTextColour()
 		{
 			if (battle.player.HP <= battle.player.MaxHP / 4)
@@ -68,22 +82,6 @@ namespace SimpleGame
 				UpdateTextAndPictures();
 			}
 		}
-
-		private void UpdateTextAndPictures()
-		{
-			this.CombatLogTextBox.Text = battle.combatlog;
-			this.MonsterHP.Text = battle.monster.HPText;
-			this.PlayerHP.Text = battle.player.HPText;
-			this.SetHPTextColour();
-			if (!battle.StillFighting())
-			{
-				this.AttackPicture.Image = null;
-				this.AutoPicture.Image = null;
-				this.ItemPicture.Image = null;
-				this.RunPicture.Image = SimpleGame.Properties.Resources.leave_image;
-			}
-		}
-
 		private void RunPicture_Click(object sender, EventArgs e)
 		{
 			if (autoattacktimer.Enabled)
@@ -100,7 +98,6 @@ namespace SimpleGame
 				this.UpdateTextAndPictures();
 			}
 		}
-
 		private void AutoPicture_Click(object sender, EventArgs e)
 		{
 			if (battle.StillFighting())
@@ -121,33 +118,11 @@ namespace SimpleGame
 			}
 		
 		}
-
-		private void AutoAttack(object sender, EventArgs e)
+		private void ItemPicture_Click(object sender, EventArgs e)
 		{
-			Action a = () => this.UpdateTextAndPictures();
-			if (battle.StillFighting())
-			{
-				if (battle.player.HP > battle.player.MaxHP / 4)
-				{
-					battle.Wait(10);	
-					this.Invoke(a);
-				}
-				else
-				{
-					this.StopAutoAttack();
-				}
-
-				if (!battle.StillFighting())
-				{
-					this.StopAutoAttack();
-				}
-			}
-		
-				else
-				{
-					this.StopAutoAttack();
-				}
-			
+			CombatInventory inventorywindow = new CombatInventory(battle);
+			inventorywindow.ShowDialog();
+			this.UpdateTextAndPictures();
 		}
 
 		private void StopAutoAttack()
@@ -162,6 +137,33 @@ namespace SimpleGame
 				this.AutoPicture.Image = null;
 			}
 			
+		}
+		private void AutoAttack(object sender, EventArgs e)
+		{
+			Action a = () => this.UpdateTextAndPictures();
+			if (battle.StillFighting())
+			{
+				if (battle.player.HP > battle.player.MaxHP / 4)
+				{
+					battle.Wait(10);
+					this.Invoke(a);
+				}
+				else
+				{
+					this.StopAutoAttack();
+				}
+
+				if (!battle.StillFighting())
+				{
+					this.StopAutoAttack();
+				}
+			}
+
+			else
+			{
+				this.StopAutoAttack();
+			}
+
 		}
 
 		private void EndOfBattle(object sender, FormClosedEventArgs e)
@@ -186,13 +188,6 @@ namespace SimpleGame
 			battle.player.HP = battle.player.MaxHP;
 		}
 
-		private void ItemPicture_Click(object sender, EventArgs e)
-		{
-			CombatInventory inventorywindow = new CombatInventory(battle);
-			inventorywindow.ShowDialog();
-			this.UpdateTextAndPictures();
-		}
-
 		private void CatchAltf4(object sender, FormClosingEventArgs e)
 		{
 			if (_altF4Pressed)
@@ -204,7 +199,6 @@ namespace SimpleGame
 				}
 			}
 		}
-
 		private void GetKeys(object sender, KeyEventArgs e)
 		{
 			if (e.Alt && e.KeyCode == Keys.F4)

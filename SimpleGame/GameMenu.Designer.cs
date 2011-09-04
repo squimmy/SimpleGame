@@ -314,6 +314,7 @@
 			this.Name = "GameMenu";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Monster Fighting Game";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.quitgame);
 			this.tableLayoutPanel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.SavePicture)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.QuitPicture)).EndInit();

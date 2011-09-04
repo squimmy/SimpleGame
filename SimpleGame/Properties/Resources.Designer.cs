@@ -112,13 +112,12 @@ namespace SimpleGame.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;items&gt;
-        ///  &lt;id0 name=&quot;None&quot; weight=&quot;0&quot; value=&quot;0&quot; type=&quot;none&quot;/&gt;
-        ///  &lt;id1 name=&quot;Dagger&quot; weight=&quot;1&quot; value=&quot;1&quot; type=&quot;weapon&quot; damage=&quot;1&quot;/&gt;
+        ///  &lt;id0 name=&quot;None&quot; weight=&quot;0&quot; value=&quot;0&quot; type=&quot;none&quot; speed=&quot;0&quot;/&gt;
+        ///  &lt;id1 name=&quot;Dagger&quot; weight=&quot;1&quot; value=&quot;1&quot; type=&quot;weapon&quot; damage=&quot;1&quot; speed=&quot;1&quot;/&gt;
         ///  &lt;id2 name=&quot;Shortsword&quot; weight=&quot;3&quot; value=&quot;4&quot; type=&quot;weapon&quot; damage=&quot;2&quot;/&gt;
-        ///  &lt;id3 name=&quot;Longsword&quot; weight=&quot;5&quot; value=&quot;10&quot; type=&quot;weapon&quot; damage=&quot;3&quot;/&gt;
-        ///  &lt;id4 name=&quot;Leather&quot; weight=&quot;10&quot; value=&quot;2&quot; type=&quot;armour&quot; protection=&quot;1&quot;/&gt;
-        ///  &lt;id5 name=&quot;Chainmail&quot; weight=&quot;25&quot; value=&quot;6&quot; type=&quot;armour&quot; protection=&quot;2&quot;/&gt;
-        ///  &lt;id6 name=&quot;Platemail&quot; weight=&quot;50&quot; [rest of string was truncated]&quot;;.
+        ///  &lt;id3 name=&quot;Longsword&quot; weight=&quot;5&quot; value=&quot;10&quot; type=&quot;weapon&quot; damage=&quot;3&quot; speed=&quot;-1&quot;/&gt;
+        ///  &lt;id4 name=&quot;Leather&quot; weight=&quot;10&quot; value=&quot;2&quot; type=&quot;armour&quot; protection=&quot;1&quot; speed=&quot;0&quot;/&gt;
+        ///  &lt;id5 name=&quot;Chainmail&quot; weight=&quot;25&quot; value=&quot;6&quot; type=&quot;armour&quot; protection=&quot; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string items {
             get {
@@ -143,11 +142,10 @@ namespace SimpleGame.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;monsters&gt;
-        ///  &lt;id0 name=&quot;fluffy bunny&quot; hp=&quot;3&quot; xp=&quot;5&quot; gold=&quot;0&quot; accuracy=&quot;60&quot; damage=&quot;1&quot; speed=&quot;5&quot; image=&quot;rabbit_image&quot;/&gt;
-        ///  &lt;id1 name=&quot;landwhale&quot; hp=&quot;20&quot; xp=&quot;10&quot; gold=&quot;20&quot; damage=&quot;4&quot; accuracy=&quot;40&quot; speed=&quot;3&quot; image=&quot;landwhale_image&quot;/&gt;
-        ///  &lt;id2 name=&quot;archaeopteryx&quot; hp=&quot;5&quot; xp=&quot;10&quot; gold=&quot;10&quot; damage=&quot;3&quot; accuracy=&quot;70&quot; speed=&quot;9&quot; image=&quot;archaeopteryx_image&quot;/&gt;
-        ///  &lt;id3 name=&quot;burning bush&quot; hp=&quot;10&quot; xp=&quot;10&quot; gold=&quot;15&quot; damage=&quot;6&quot; accuracy=&quot;20&quot; speed=&quot;1&quot; image=&quot;bush_image&quot;/&gt;
-        ///&lt;/monster [rest of string was truncated]&quot;;.
+        ///  &lt;id0 name=&quot;fluffy bunny&quot; level=&quot;0&quot; hp=&quot;3&quot; xp=&quot;5&quot; gold=&quot;0&quot; accuracy=&quot;60&quot; damage=&quot;1&quot; speed=&quot;5&quot; image=&quot;rabbit_image&quot;/&gt;
+        ///  &lt;id1 name=&quot;landwhale&quot; level=&quot;2&quot; hp=&quot;20&quot; xp=&quot;10&quot; gold=&quot;20&quot; damage=&quot;4&quot; accuracy=&quot;40&quot; speed=&quot;4&quot; image=&quot;landwhale_image&quot;/&gt;
+        ///  &lt;id2 name=&quot;archaeopteryx&quot; level=&quot;1&quot; hp=&quot;5&quot; xp=&quot;10&quot; gold=&quot;10&quot; damage=&quot;3&quot; accuracy=&quot;70&quot; speed=&quot;11&quot; image=&quot;archaeopteryx_image&quot;/&gt;
+        ///  &lt;id3 name=&quot;burning bush&quot; level=&quot;1&quot; hp=&quot;10&quot; xp=&quot;10&quot; gold=&quot;15&quot; damage=&quot;6&quot; accuracy=&quot;20&quot;  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string monsters {
             get {

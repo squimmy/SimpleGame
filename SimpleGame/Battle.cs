@@ -10,77 +10,39 @@ namespace SimpleGame
 		public Player player;
 		public Monster monster;
 		public string combatlog;
-		private int playerTimer;
-		private int monsterTimer;
-		public enum CombatAction { Attack, UseItem };
-		private CombatAction nextAction;
-		private Item nextActionItem;
 
 		public Battle(Player currentplayer)
 		{
 			player = currentplayer;
-			playerTimer = monsterTimer = 0;
 			monster = new Monster(Combat.ChooseMonster(player.Level));
-			nextAction = CombatAction.Attack;
-			nextActionItem = player.EquippedWeapon;
+			player.ResetTimers();
+			monster.ResetTimers();
 			player.Target = monster;
 			monster.Target = player;
 		}
 
 		public void PlayerAttack()
 		{
-			Attack attack = player.AttackTarget();
-			prependToCombatLog(attack.CombatMessage);
+			prependToCombatLog(player.UseAllReadyAbilities());
 		}
-
-		public void SelectNextAction(CombatAction action, Item itemToUse)
+		public void MonsterAttack()
 		{
-			this.nextAction = action;
-			this.nextActionItem = itemToUse;
+			prependToCombatLog(monster.UseAllReadyAbilities());
 		}
 
 		public void Attack()
 		{
-			SelectNextAction(CombatAction.Attack, player.EquippedWeapon);
-			this.Wait(1000 / playerActionSpeed());
+			player.SelectNewAction(CombatAction.Attack, player.EquippedWeapon);
+			this.Wait();
 		}
 		
-		public void performItemEffect(Consumable item)
-		{
-
-			switch (item.TypeOfConsumable)
-			{
-				case Consumable.ConsumableType.HealthPotion:
-					player.HP += item.Effectiveness;
-					break;
-				case Consumable.ConsumableType.StrengthPotion:
-					player.TemporaryDamageBonus = item.Effectiveness;
-					break;
-				case Consumable.ConsumableType.SpeedPotion:
-					break;
-				default:
-					break;
-			}
-			item.Count -= 1;
-			if (item.Count <= 0)
-			{
-				player.Inventory.Remove(item);
-			}
-		}
-
 		public void UseItem(Consumable item)
 		{
-			this.nextAction = CombatAction.UseItem;
-			this.nextActionItem = item;
-			this.Wait(1000 / (player.Speed + item.Speed));
+			player.SelectNewAction(CombatAction.UseItem, item);
+			this.Wait();
+			player.SelectNewAction(CombatAction.Attack, player.EquippedWeapon);
 		}
-
-		public void MonsterAttack()
-		{
-			Attack attack = monster.AttackTarget();
-			prependToCombatLog(attack.CombatMessage);
-		}
-
+		
 		public void InitiateAttack()
 		{
 			PlayerAttack();
@@ -100,35 +62,6 @@ namespace SimpleGame
 				player.XP += monster.XPReward;
 				player.Gold += monster.GoldReward;
 			}
-		}
-
-		private void doPlayerAction()
-		{
-			switch (this.nextAction)
-			{
-				case CombatAction.Attack:
-					this.InitiateAttack();
-					break;
-				case CombatAction.UseItem:
-					this.performItemEffect((Consumable)nextActionItem);
-					break;
-				default:
-					break;
-			}
-		}
-
-		private void checkPlayerAction()
-		{
-			if (playerTimer >= (1000 / playerActionSpeed()))
-			{
-				playerTimer -= (1000 / playerActionSpeed());
-				doPlayerAction();
-			}
-		}
-
-		public int playerActionSpeed()
-		{
-			return player.Speed + nextActionItem.Speed;
 		}
 
 		public bool TryToRun()
@@ -152,41 +85,52 @@ namespace SimpleGame
 
 		public void IncrementTime()
 		{
-			playerTimer += 1;
-			monsterTimer += 1;
+			player.IncrementTimers();
+			monster.IncrementTimers();
 		}
-
-		public void checkMonsterAttack()
+		public void Wait()
 		{
-			if (monsterTimer >= (1000/monster.Speed))
+			bool breakflag = false;
+			while (player.Alive && monster.Alive)
 			{
-				monsterTimer -= (1000/monster.Speed);
-				MonsterAttack();
+				IncrementTime();
+				if (player.PrimaryAbility.Ready)
+					breakflag = true;
+				resolveAbilities();
+				if (breakflag)
+					break;
 			}
+			return;
 		}
-
-		public void Wait(int units)
+		public void Wait(int time)
 		{
-			for (int i = 0; i < units; i++)
+			for (int i = 0; i < time; i++)
 			{
 				this.IncrementTime();
-				if (Combat.RandomNumber(player.Speed) >= Combat.RandomNumber(monster.Speed))
-				{
-					checkPlayerAction();
-					checkMonsterAttack();
-				}
-				else
-				{
-					checkMonsterAttack();
-					checkPlayerAction();
-				}
+				resolveAbilities();
 			}
 			return;
 		}
 
+		private void resolveAbilities()
+		{
+			if (Combat.RandomNumber(player.Speed) >= Combat.RandomNumber(monster.Speed))
+			{
+				prependToCombatLog(player.UseAllReadyAbilities());
+				prependToCombatLog(monster.UseAllReadyAbilities());
+
+			}
+			else
+			{
+				prependToCombatLog(monster.UseAllReadyAbilities());
+				prependToCombatLog(player.UseAllReadyAbilities());
+			}
+		}
+
 		private void prependToCombatLog(string text)
 		{
-			this.combatlog = text + System.Environment.NewLine + this.combatlog;
+			if (text != null)
+				this.combatlog = text + System.Environment.NewLine + this.combatlog;
 		}
 	}
 }

@@ -11,7 +11,11 @@ namespace SimpleGame
 
 		private static List<List<int>> monsterLevels = new List<List<int>>();
 
-		public enum DamageType { Cut, Stab, Crush, Fire, Ice, Magic, Holy };
+		
+		public enum AttackType { Primary, Secondary, Tertiary };
+		public enum EffectType { Heal, Damage, Buff, DeBuff, Stun };
+		// TODO: add add poison/curse/bless to effects
+		public enum Stat { Strength, Speed, Accuracy };
 
 		public static void generateMonsterList()
 		{

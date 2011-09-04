@@ -23,6 +23,32 @@ namespace SimpleGame
 			this.UpdateText();
 		}
 
+
+		private void FightMonstersPicture_Click(object sender, EventArgs e)
+		{
+			BattleScreen fight = new BattleScreen(player);
+			fight.ShowDialog();
+			this.UpdateText();
+		}
+		private void ShopPicture_Click(object sender, EventArgs e)
+		{
+			ShopMenu goshopping = new ShopMenu(player);
+			goshopping.ShowDialog();
+			this.UpdateText();
+		}
+		private void SavePicture_Click(object sender, EventArgs e)
+		{
+			if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			{
+				Game.SaveGame(player, saveFileDialog.FileName);
+			}
+		}
+		private void QuitPicture_Click(object sender, EventArgs e)
+		{
+			quitgame(sender, e);
+		}
+
+
 		private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			NewGame window = new NewGame();
@@ -32,27 +58,7 @@ namespace SimpleGame
 				this.UpdateText();
 			}
 		}
-
-		private void FightMonstersPicture_Click(object sender, EventArgs e)
-		{
-			BattleScreen fight = new BattleScreen(player);
-			fight.ShowDialog();
-			this.UpdateText();
-		}
-
-		private void ShopPicture_Click(object sender, EventArgs e)
-		{
-			ShopMenu goshopping = new ShopMenu(player);
-			goshopping.ShowDialog();
-			this.UpdateText();
-		}
-
 		private void quitToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			quitgame(sender, e);
-		}
-
-		private void QuitPicture_Click(object sender, EventArgs e)
 		{
 			quitgame(sender, e);
 		}
@@ -74,17 +80,6 @@ namespace SimpleGame
 			this.LevelLabel.Text = player.Level.ToString();
 			this.GoldLabel.Text = player.Gold.ToString();
 		}
-
-		private void SavePicture_Click(object sender, EventArgs e)
-		{
-			if (saveFileDialog.ShowDialog() == DialogResult.OK)
-			{
-				Game.SaveGame(player, saveFileDialog.FileName);
-			}
-		}
-
-
-
 
 	}
 }
