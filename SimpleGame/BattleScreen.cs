@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SimpleGame.Logic;
 
 namespace SimpleGame
 {
@@ -24,7 +25,7 @@ namespace SimpleGame
 			this.MonsterName.Text = battle.monster.Name;
 			this.MonsterHP.Text = battle.monster.HPText;
 			this.PlayerPicture.Image = global::SimpleGame.Properties.Resources.player_image;
-			this.MonsterPicture.Image = battle.monster.Picture;
+			this.MonsterPicture.Image = Art.GetMonsterImage(battle.monster.ID);
 		}
 
 		private void UpdateTextAndPictures()

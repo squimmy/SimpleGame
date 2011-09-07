@@ -6,12 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SimpleGame.Logic;
 
 namespace SimpleGame
 {
 	public partial class ShopMenu : Form
 	{
-		private Shop shop;
+		private SimpleGame.Logic.Shop shop;
 		private List<Label> shopInventoryPriceLabel = new List<Label>();
 		private List<PictureBox> shopInventoryPicture = new List<PictureBox>();
 		private List<Label> shopInventoryLabel = new List<Label>();
@@ -27,7 +28,7 @@ namespace SimpleGame
 		public ShopMenu(Player player)
 		{
 			InitializeComponent();
-			shop = new Shop(player);
+			shop = new SimpleGame.Logic.Shop(player);
 
 			this.ShopInventoryPanel.RowCount = shop.Stock.Count;
 
@@ -125,7 +126,7 @@ namespace SimpleGame
 		{
 			inventoryPicture[number].Anchor = AnchorStyles.None;
 			inventoryPicture[number].Size = new System.Drawing.Size(40, 40);
-			inventoryPicture[number].Image = inventory[number].Picture;
+			inventoryPicture[number].Image = Art.GetItemImage(inventory[number].ID);
 			inventoryPicture[number].Tag = inventory[number];
 						
 			if (action == Action.Buy)

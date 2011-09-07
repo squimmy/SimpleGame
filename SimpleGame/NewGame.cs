@@ -14,7 +14,7 @@ namespace SimpleGame
 		public NewGame()
 		{
 			InitializeComponent();
-			CharacterNameInput.Text = Game.RandomName();
+			CharacterNameInput.Text = SimpleGame.Logic.Game.RandomName();
 		}
 
 		public string CharacterNameTextBox()
@@ -30,7 +30,7 @@ namespace SimpleGame
 			}
 			else
 			{
-				CharacterNameInput.Text = Game.RandomName();
+				CharacterNameInput.Text = SimpleGame.Logic.Game.RandomName();
 			}
 		}
 

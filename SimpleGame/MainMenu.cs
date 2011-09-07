@@ -14,7 +14,7 @@ namespace SimpleGame
 		public MainMenu()
 		{
 			InitializeComponent();
-			Combat.generateMonsterList();
+			SimpleGame.Logic.Combat.generateMonsterList();
 		}
 
 
@@ -33,7 +33,7 @@ namespace SimpleGame
 			NewGame window = new NewGame();
 			if (window.ShowDialog(this) == DialogResult.OK)
 			{
-				GameMenu game = new GameMenu(Game.StartGame(window.CharacterNameTextBox()));
+				GameMenu game = new GameMenu(SimpleGame.Logic.Game.StartGame(window.CharacterNameTextBox()));
 				this.Hide();
 				game.Show();
 			}
@@ -43,7 +43,7 @@ namespace SimpleGame
 		{
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				GameMenu game = new GameMenu(Game.LoadGame(openFileDialog.FileName));
+				GameMenu game = new GameMenu(SimpleGame.Logic.Game.LoadGame(openFileDialog.FileName));
 				this.Hide();
 				game.Show();
 			}

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SimpleGame.Logic;
 
 namespace SimpleGame
 {
@@ -68,7 +69,7 @@ namespace SimpleGame
 		{
 			inventoryPicture[number].Anchor = AnchorStyles.None;
 			inventoryPicture[number].Size = new System.Drawing.Size(40, 40);
-			inventoryPicture[number].Image = inventoryConsumables[number].Picture;
+			inventoryPicture[number].Image = Art.GetItemImage(inventoryConsumables[number].ID);
 			inventoryPicture[number].Tag = inventoryConsumables[number];
 
 			inventoryPicture[number].Click += new EventHandler(useItem_Click);

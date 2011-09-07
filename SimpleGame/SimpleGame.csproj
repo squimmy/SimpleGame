@@ -74,37 +74,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abilities\Ability.cs" />
-    <Compile Include="Abilities\DirectDamage.cs" />
-    <Compile Include="Abilities\HealAbility.cs" />
-    <Compile Include="Abilities\ItemAbility.cs" />
-    <Compile Include="Items\Armour.cs" />
-    <Compile Include="Effects\Attack.cs" />
-    <Compile Include="Battle.cs" />
     <Compile Include="BattleScreen.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BattleScreen.Designer.cs">
       <DependentUpon>BattleScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Effects\BuffEffect.cs" />
     <Compile Include="CombatInventory.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CombatInventory.Designer.cs">
       <DependentUpon>CombatInventory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Items\Consumable.cs" />
-    <Compile Include="Combat.cs" />
-    <Compile Include="Effects\DamageEffect.cs" />
-    <Compile Include="Effects\DeBuffEffect.cs" />
-    <Compile Include="Effects\Effect.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="Effects\HealEffect.cs" />
-    <Compile Include="Enums.cs" />
-    <Compile Include="Items\Item.cs" />
-    <Compile Include="Items\ItemGenerator.cs" />
-    <Compile Include="Items\ItemStats.cs" />
+    <Compile Include="Art.cs" />
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,22 +99,18 @@
     <Compile Include="GameMenu.Designer.cs">
       <DependentUpon>GameMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Game.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Warriors\Monster.cs" />
-    <Compile Include="Warriors\MonsterStats.cs" />
     <Compile Include="NewGame.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NewGame.Designer.cs">
       <DependentUpon>NewGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="Warriors\Player.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopMenu.cs">
       <SubType>Form</SubType>
@@ -140,13 +118,6 @@
     <Compile Include="ShopMenu.Designer.cs">
       <DependentUpon>ShopMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="StatParser.cs" />
-    <Compile Include="Shop.cs" />
-    <Compile Include="Effects\StunEffect.cs" />
-    <Compile Include="Abilities\UnarmedAttack.cs" />
-    <Compile Include="Warriors\Warrior.cs" />
-    <Compile Include="Items\Weapon.cs" />
-    <Compile Include="Abilities\WeaponAttack.cs" />
     <EmbeddedResource Include="BattleScreen.resx">
       <DependentUpon>BattleScreen.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,24 +157,6 @@
     <None Include="SimpleGame_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\monsters-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\shop-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\save-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\quit-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\new-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\load-image.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
@@ -226,41 +179,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\player-image.png" />
+    <ProjectReference Include="..\SimpleGame.Logic\SimpleGame.Logic.csproj">
+      <Project>{C5C753B9-474A-41F9-98AE-23112683A4F3}</Project>
+      <Name>SimpleGame.Logic</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Images\rabbit-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\attack-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\auto-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\item-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\run-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\leave-image.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\stop-image.png" />
-    <None Include="Images\mystery_monster_image.png" />
-    <None Include="Images\armour_image.png" />
-    <None Include="Images\potion_image.png" />
-    <None Include="Images\weapon_image.png" />
-    <None Include="Images\buy_image.png" />
-    <None Include="Images\info_image.png" />
-    <None Include="Images\sell_image.png" />
-    <Content Include="Items\items.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Warriors\monsters.xml">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="abilities.xml" />
+    <Content Include="items.xml" />
+    <Content Include="monsters.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
