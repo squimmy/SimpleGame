@@ -118,67 +118,76 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="quit_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\quit-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="item_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\item-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="new_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\new-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rabbit_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\rabbit-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="run_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\run-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\save-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shop_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\shop-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="player_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\player-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="auto_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\auto-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="load_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\load-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="armour_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\items\armour_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="attack_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\attack-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Images\buttons\attack_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fight_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\monsters-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="leave_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\leave-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="stop_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\stop-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mystery_monster_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\mystery_monster_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="armour_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\armour_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="auto_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\auto_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="buy_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\buy_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Images\buttons\buy_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chainmail" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\items\chainmail.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="chestplate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\items\chestplate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fight_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\monsters_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="info_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\info_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Images\buttons\info_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="item_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\item-image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="leather_armour" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\items\leather_armour.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="leave_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\leave_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="load_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\load_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mystery_monster_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\monsters\mystery_monster_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="new_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\new_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="player_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\monsters\player_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="potion_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\potion_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Images\items\potion_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="quit_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\quit_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rabbit_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\monsters\rabbit_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="run_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\run_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\save_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sell_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\sell_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Images\buttons\sell_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shop_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\shop_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="stop_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\buttons\stop_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="weapon_image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\weapon_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Images\items\weapon_image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

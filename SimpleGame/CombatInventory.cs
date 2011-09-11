@@ -95,7 +95,7 @@ namespace SimpleGame
 
 		private void getpotionlist()
 		{
-			List<Item> templist = battle.player.Inventory.FindAll(delegate(Item target) { return target.Type == Item.ItemType.Consumable; });
+			List<Item> templist = battle.player.Inventory.FindAll(delegate(Item target) { return target.Type == ItemType.Consumable; });
 			inventoryConsumables = new List<Consumable>();
 
 			foreach (Item item in templist)

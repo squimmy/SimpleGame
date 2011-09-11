@@ -11,6 +11,7 @@ namespace SimpleGame.Logic
 	{
 		private int protection;
 
+
 		public Armour(int itemid): base(itemid)
 		{
 			this.protection = int.Parse(ItemStats.GetStat(itemid, "protection"));

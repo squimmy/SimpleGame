@@ -75,29 +75,6 @@
     <Compile Include="Warriors\Player.cs" />
     <Compile Include="Warriors\Warrior.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Images\weapon_image.png" />
-    <None Include="Images\stop-image.png" />
-    <None Include="Images\shop-image.png" />
-    <None Include="Images\sell_image.png" />
-    <None Include="Images\save-image.png" />
-    <None Include="Images\run-image.png" />
-    <None Include="Images\rabbit-image.png" />
-    <None Include="Images\quit-image.png" />
-    <None Include="Images\potion_image.png" />
-    <None Include="Images\player-image.png" />
-    <None Include="Images\new-image.png" />
-    <None Include="Images\mystery_monster_image.png" />
-    <None Include="Images\monsters-image.png" />
-    <None Include="Images\load-image.png" />
-    <None Include="Images\leave-image.png" />
-    <None Include="Images\item-image.png" />
-    <None Include="Images\info_image.png" />
-    <None Include="Images\buy_image.png" />
-    <None Include="Images\auto-image.png" />
-    <None Include="Images\attack-image.png" />
-    <None Include="Images\armour_image.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,7 +9,7 @@ namespace SimpleGame.Logic
 	{
 		public static string GetStat(int abilityid, string stat)
 		{
-			string result = StatParser.XMLStats(abilityid, stat, "abilities.xml");
+			string result = StatParser.XMLStats(abilityid, stat, "monster_abilities.xml");
 			return result ?? getDefaultStat(stat);
 		}
 

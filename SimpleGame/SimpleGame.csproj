@@ -185,9 +185,75 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="abilities.xml" />
-    <Content Include="items.xml" />
-    <Content Include="monsters.xml" />
+    <None Include="Images\items\armour_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\items\potion_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\items\weapon_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\monsters\mystery_monster_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\monsters\player_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\monsters\rabbit_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\attack_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\auto_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\buy_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\info_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\item-image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\leave_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\load_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\monsters_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\new_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\quit_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\run_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\save_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\sell_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\shop_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\buttons\stop_image.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\items\leather_armour.png" />
+    <None Include="Images\items\chestplate.png" />
+    <None Include="Images\items\chainmail.png" />
+    <Content Include="stats\items.xml" />
+    <Content Include="stats\monsters.xml" />
+    <Content Include="stats\monster_abilities.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

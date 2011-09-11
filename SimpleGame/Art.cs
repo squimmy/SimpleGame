@@ -13,7 +13,18 @@ namespace SimpleGame
 		}
 		static public System.Drawing.Image GetItemImage(int itemid)
 		{
-			return SimpleGame.Properties.Resources.weapon_image;
+			switch (itemid)
+			{
+				case 4:
+					return SimpleGame.Properties.Resources.leather_armour;
+				case 5:
+					return SimpleGame.Properties.Resources.chainmail;
+				case 6:
+					return SimpleGame.Properties.Resources.chestplate;
+				default:
+					return SimpleGame.Properties.Resources.weapon_image;
+			}
+			
 		}
 
 	}

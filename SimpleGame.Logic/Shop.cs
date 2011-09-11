@@ -27,7 +27,7 @@ namespace SimpleGame.Logic
 		public void BuyItem(Item item)
 		{
 			customer.Gold -= item.Value * 15;
-			if (item.Type == Item.ItemType.Consumable && customer.PlayerHasItem(item.ID))
+			if (item.Type == ItemType.Consumable && customer.PlayerHasItem(item.ID))
 			{
 				Consumable currentstash = (Consumable)customer.Inventory.Find(delegate(Item target){ return target.ID == item.ID; } );
 				currentstash.Count ++;

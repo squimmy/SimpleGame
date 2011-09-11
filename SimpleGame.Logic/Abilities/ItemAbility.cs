@@ -24,7 +24,7 @@ namespace SimpleGame.Logic
 		public override IEffect UseAbility()
 		{
 			this.timer -= (1000 / this.speed);
-			if (item.Type == Item.ItemType.Consumable)
+			if (item.Type == ItemType.Consumable)
 			{
 				Player player = (Player)attacker;
 				Consumable consumable = (Consumable)item;

@@ -9,7 +9,7 @@ namespace SimpleGame.Logic
 	[Serializable]
 	public class Item : ISerializable
 	{
-		public enum ItemType { None, Weapon, Armour, Consumable }
+		
 
 		protected string name;
 		protected int weight;
@@ -78,9 +78,9 @@ namespace SimpleGame.Logic
 			{
 				switch (this.type)
 				{
-					case Item.ItemType.Weapon:
+					case ItemType.Weapon:
 						return "wield";
-					case Item.ItemType.Armour:
+					case ItemType.Armour:
 						return "wear";
 					default:
 						return "use";

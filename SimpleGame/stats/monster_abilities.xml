@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<monster_abilities>
+  <id0/>
+  <id1 type="unarmed" damagetype="fire" speed="9"/>
+</monster_abilities>

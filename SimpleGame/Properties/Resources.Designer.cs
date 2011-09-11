@@ -88,6 +88,20 @@ namespace SimpleGame.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap chainmail {
+            get {
+                object obj = ResourceManager.GetObject("chainmail", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap chestplate {
+            get {
+                object obj = ResourceManager.GetObject("chestplate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap fight_image {
             get {
                 object obj = ResourceManager.GetObject("fight_image", resourceCulture);
@@ -105,6 +119,13 @@ namespace SimpleGame.Properties {
         internal static System.Drawing.Bitmap item_image {
             get {
                 object obj = ResourceManager.GetObject("item_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap leather_armour {
+            get {
+                object obj = ResourceManager.GetObject("leather_armour", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
