@@ -92,6 +92,24 @@ namespace SimpleGame.Logic
 		{
 			return Combat.RandomNumber(100) <= accuracy;
 		}
+		public static int ApplyDamageReduction(int damage, int protectionValue)
+		{
+			double taken = damage * ProtectionMultiplierValue(protectionValue);
+			int remainder = (int)((taken % 1) * 100);
+			if (RollToHit(remainder))
+				return (int)taken + 1;
+			else
+				return (int)taken;
+		}
+		public static double ProtectionMultiplierValue(int protectionValue)
+		{
+			return Math.Pow(0.933, (double)protectionValue);
+		}
+		public static int ProtectionPercentage(int protectionValue)
+		{
+			return (int)Math.Round(ProtectionMultiplierValue(protectionValue) * 100, 0);
+		}
+		
 		public static bool MonsterHasInitiative(int monsterspeed, int playerspeed)
 		{
 			return RandomNumber(monsterspeed) > RandomNumber(playerspeed);

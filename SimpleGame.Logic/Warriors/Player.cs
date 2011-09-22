@@ -18,13 +18,12 @@ namespace SimpleGame.Logic
 		private int basestrength;
 		private int baseDamageReduction;
 
-		private Weapon equippedweapon;
-		private Armour equippedarmour;
-
+		private Equipment equipment;
 		private List<Item> inventory = new List<Item>();
 
-		public Player(string name, int hp, int level, int nextlevel, int xp, int accuracy, int strength, int speed, int gold, List<Item> inventory, Weapon weapon, Armour armour)
+		public Player(string name, int hp, int level, int nextlevel, int xp, int accuracy, int strength, int speed, int gold, List<Item> inventory, Weapon weapon, Armour headArmour, Armour torsoArmour, Armour handArmour, Armour legArmour, Armour feetArmour)
 		{
+			
 			this.name = name;
 			this.hp = this.basemaxhp = hp;
 			this.level = level;
@@ -36,13 +35,18 @@ namespace SimpleGame.Logic
 			this.gold = gold;
 
 			this.inventory = inventory;
-			this.equippedweapon = weapon;
-			this.equippedarmour = armour;
+			this.equipment = new Equipment();
 
 			this.baseDamageReduction = 0;
 
 			this.unique = true;
 			this.primaryAbility = new UnarmedAttack(this, DamageType.Crush, 0, 0, null);
+
+			//adding some items to debug inventory controls:
+			for (int i = 1; i < 7; i++)
+			{
+				inventory.Add(ItemGenerator.CreateItem(i));
+			}
 		}
 		public Player(SerializationInfo info, StreamingContext ctxt)
 		{
@@ -57,8 +61,7 @@ namespace SimpleGame.Logic
 			this.gold = (int)info.GetValue("gold", typeof(int));
 
 			this.inventory = (List<Item>)info.GetValue("inventory", typeof(List<Item>));
-			this.equippedweapon= (Weapon)info.GetValue("weapon", typeof(Weapon));
-			this.equippedarmour= (Armour)info.GetValue("armour", typeof(Armour));
+			this.equipment= (Equipment)info.GetValue("equipment", typeof(Equipment));
 		}
 		public Player()
 		{
@@ -66,7 +69,8 @@ namespace SimpleGame.Logic
 
 		protected override int maxhp
 		{
-			get { return this.basemaxhp + this.equippedweapon.HPBonus + this.equippedarmour.HPBonus; }
+			//get { return this.basemaxhp + this.equippedweapon.HPBonus + this.equipmentHPBonus; }
+			get { return this.basemaxhp + this.equipment.Bonus(Stat.HP); }
 		}
 		public int BaseMaxHP
 		{
@@ -75,7 +79,8 @@ namespace SimpleGame.Logic
 
 		protected override int speed
 		{
-			get { return this.basespeed + this.equippedweapon.SpeedBonus + this.equippedarmour.SpeedBonus; }
+			//get { return this.basespeed + this.equippedweapon.SpeedBonus + this.equipmentSpeedBonus; }
+			get { return this.basespeed + this.equipment.Bonus(Stat.Speed); }
 		}
 		public int BaseSpeed
 		{
@@ -84,7 +89,8 @@ namespace SimpleGame.Logic
 
 		protected override int strength
 		{
-			get { return this.basestrength + this.equippedweapon.StrengthBonus + this.equippedarmour.StrengthBonus; }
+			//get { return this.basestrength + this.equippedweapon.StrengthBonus + this.equipmentStrengthBonus; }
+			get { return this.basestrength + this.equipment.Bonus(Stat.Strength); }
 		}
 		public int BaseStrength
 		{
@@ -95,6 +101,11 @@ namespace SimpleGame.Logic
 		{
 			get { return inventory; }
 		}
+		public Equipment Equipment
+		{
+			get { return equipment; }
+		}
+
 		public bool PlayerHasItem(int itemid)
 		{
 			foreach (Item item in inventory)
@@ -106,23 +117,7 @@ namespace SimpleGame.Logic
 			}
 			return false;
 		}
-		public void EquipWeapon(Weapon weapon)
-		{
-			equippedweapon = weapon;
-			this.primaryAbility = new WeaponAttack(this, this.equippedweapon);
-		}
-		public void EquipArmour(Armour armour)
-		{
-			equippedarmour = armour;
-		}
-		public Weapon EquippedWeapon
-		{
-			get { return equippedweapon; }
-		}
-		public Armour EquippedArmour
-		{
-			get { return equippedarmour; }
-		}
+
 		public int Gold
 		{
 			get { return gold; }
@@ -131,12 +126,10 @@ namespace SimpleGame.Logic
 
 		protected override int damageReduction
 		{
-			get { return this.baseDamageReduction + this.equippedarmour.Protection; }
+			get { return this.baseDamageReduction + this.equipment.Protection(DamageType.Crush); }
+			
 		}
-		public int AttackSpeed
-		{
-			get { return this.speed + this.equippedweapon.Speed; }
-		}
+
 		protected override int damage
 		{
 			get { return this.strength + this.temporaryDamageBonus; }
@@ -184,7 +177,7 @@ namespace SimpleGame.Logic
 			switch (Action)
 			{
 				case CombatAction.Attack:
-					this.primaryAbility = new WeaponAttack(this, equippedweapon);
+					this.primaryAbility = new WeaponAttack(this, Equipment.RightHandWeapon);
 					break;
 				case CombatAction.UseItem:
 					this.primaryAbility = new ItemAbility(this, Item);
@@ -219,8 +212,7 @@ namespace SimpleGame.Logic
 			info.AddValue("gold", this.gold);
 
 			info.AddValue("inventory", this.inventory);
-			info.AddValue("weapon", this.equippedweapon);
-			info.AddValue("armour", this.equippedarmour);
+			info.AddValue("equipment", this.equipment);
 		}
 	}
 }

@@ -27,5 +27,7 @@ namespace MyExtensions
 				return str + "s";
 			}
 		}
+
+
 	}
 }

@@ -32,7 +32,7 @@ namespace SimpleGame.Logic
 
 		public void Attack()
 		{
-			player.SelectNewAction(CombatAction.Attack, player.EquippedWeapon);
+			player.SelectNewAction(CombatAction.Attack, player.Equipment.RightHandWeapon);
 			this.Wait();
 		}
 		
@@ -40,7 +40,7 @@ namespace SimpleGame.Logic
 		{
 			player.SelectNewAction(CombatAction.UseItem, item);
 			this.Wait();
-			player.SelectNewAction(CombatAction.Attack, player.EquippedWeapon);
+			player.SelectNewAction(CombatAction.Attack, player.Equipment.RightHandWeapon);
 		}
 		
 		public void InitiateAttack()

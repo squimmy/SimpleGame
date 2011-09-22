@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<monsters>
+  <id0 name="fluffy bunny" level="0" hp="3" xp="5" gold="0" accuracy="60" strength="1" speed="5"/>
+  <id1 name="landwhale" level="2" hp="20" xp="10" gold="20" strength="4" accuracy="40" speed="4"/>
+  <id2 name="archaeopteryx" level="1" hp="5" xp="10" gold="10" strength="3" accuracy="70" speed="11"/>
+  <id3 name="burning bush" level="1" hp="10" xp="10" gold="15" strength="6" accuracy="20" speed="4"/>
+  <id4 name="Lord Yyod" level="2" hp="15" xp="35" gold="50" strength="2" accuracy="90" speed="15" unique="1"/>
+</monsters>

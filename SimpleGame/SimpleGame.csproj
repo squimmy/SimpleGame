@@ -87,6 +87,12 @@
       <DependentUpon>CombatInventory.cs</DependentUpon>
     </Compile>
     <Compile Include="Art.cs" />
+    <Compile Include="Inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Inventory.Designer.cs">
+      <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,13 +126,18 @@
     </Compile>
     <EmbeddedResource Include="BattleScreen.resx">
       <DependentUpon>BattleScreen.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CombatInventory.resx">
       <DependentUpon>CombatInventory.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="GameMenu.resx">
       <DependentUpon>GameMenu.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Inventory.resx">
+      <DependentUpon>Inventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>
@@ -251,7 +262,57 @@
     <None Include="Images\items\leather_armour.png" />
     <None Include="Images\items\chestplate.png" />
     <None Include="Images\items\chainmail.png" />
-    <Content Include="stats\items.xml" />
+    <None Include="Images\inventory\total.png" />
+    <None Include="Images\inventory\body.png" />
+    <None Include="Images\inventory\head.png" />
+    <None Include="Images\inventory\torso.png" />
+    <None Include="Images\inventory\legs.png" />
+    <None Include="Images\inventory\hands.png" />
+    <None Include="Images\inventory\feet.png" />
+    <None Include="Images\inventory\torso_deselected.png" />
+    <None Include="Images\inventory\torso_selected.png" />
+    <None Include="Images\inventory\legs_deselected.png" />
+    <None Include="Images\inventory\legs_selected.png" />
+    <None Include="Images\inventory\none selected.png" />
+    <None Include="Images\inventory\head selected.png" />
+    <None Include="Images\inventory\torso selected.png" />
+    <None Include="Images\inventory\legs selected.png" />
+    <None Include="Images\inventory\hands selected.png" />
+    <None Include="Images\inventory\feet selected.png" />
+    <None Include="Images\inventory\none_selected.png" />
+    <None Include="Images\inventory\head_selected.png" />
+    <None Include="Images\inventory\hands_selected.png" />
+    <None Include="Images\inventory\feet_selected.png" />
+    <None Include="Images\items\no_item.png" />
+    <None Include="Resources\crush.png" />
+    <None Include="Resources\cut.png" />
+    <None Include="Resources\electricity.png" />
+    <None Include="Resources\fire.png" />
+    <None Include="Resources\holy.png" />
+    <None Include="Resources\ice.png" />
+    <None Include="Resources\magic.png" />
+    <None Include="Resources\none.png" />
+    <None Include="Resources\poison.png" />
+    <None Include="Resources\stab.png" />
+    <None Include="Images\damage\stab.png" />
+    <None Include="Images\damage\poison.png" />
+    <None Include="Images\damage\none.png" />
+    <None Include="Images\damage\magic.png" />
+    <None Include="Images\damage\ice.png" />
+    <None Include="Images\damage\holy.png" />
+    <None Include="Images\damage\fire.png" />
+    <None Include="Images\damage\electricity.png" />
+    <None Include="Images\damage\cut.png" />
+    <None Include="Images\damage\crush.png" />
+    <None Include="Images\items\t-shirt.png" />
+    <None Include="Images\items\jeans.png" />
+    <None Include="Images\items\tshirt.png" />
+    <None Include="Images\items\hand.png" />
+    <None Include="Images\items\foot.png" />
+    <None Include="Images\items\hair.png" />
+    <Content Include="stats\items.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="stats\monsters.xml" />
     <Content Include="stats\monster_abilities.xml" />
   </ItemGroup>

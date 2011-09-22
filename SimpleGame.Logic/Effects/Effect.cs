@@ -7,7 +7,7 @@ namespace SimpleGame.Logic
 {
 	public interface IEffect
 	{
-		string CombatMessage();
+		string CombatMessage{get;}
 		void Resolve();
 	}
 }

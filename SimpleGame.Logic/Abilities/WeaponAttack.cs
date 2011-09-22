@@ -14,6 +14,7 @@ namespace SimpleGame.Logic
 
 		public WeaponAttack(Warrior Attacker, Weapon Weapon)
 		{
+			this.name = weapon.Name;
 			this.effectType = EffectType.Attack;
 			this.attacker = Attacker;
 			this.weapon = Weapon;

@@ -9,12 +9,11 @@ namespace SimpleGame.Logic
 	[Serializable]
 	public class Item : ISerializable
 	{
-		
-
+		protected int id;
 		protected string name;
+		protected string info;
 		protected int weight;
 		protected int value;
-		protected int id;
 		protected int speed;
 		protected int speedbonus;
 		protected int strengthbonus;
@@ -26,6 +25,7 @@ namespace SimpleGame.Logic
 		{
 			this.id = itemid;
 			this.name = ItemStats.GetStat(itemid, "name");
+			this.info = ItemStats.GetStat(itemid, "info");
 			this.weight = int.Parse(ItemStats.GetStat(itemid, "weight"));
 			this.value = int.Parse(ItemStats.GetStat(itemid, "value"));
 			this.speed = int.Parse(ItemStats.GetStat(itemid, "speed"));
@@ -72,6 +72,15 @@ namespace SimpleGame.Logic
 		{
 			get { return id; }
 		}
+		public virtual string Name
+		{
+			get { return name; }
+		}
+		public string Info
+		{
+			get { return info; }
+		}
+
 		public string UsageVerb
 		{
 			get
@@ -92,10 +101,6 @@ namespace SimpleGame.Logic
 			get { return this.usageAbility; }
 		}
 
-		public virtual string Name
-		{
-			get { return name; }
-		}
 		public int Weight
 		{
 			get { return weight; }

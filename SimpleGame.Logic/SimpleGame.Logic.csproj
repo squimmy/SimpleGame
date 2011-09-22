@@ -60,8 +60,10 @@
     <Compile Include="Enums.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="InventoryExtensions.cs" />
     <Compile Include="Items\Armour.cs" />
     <Compile Include="Items\Consumable.cs" />
+    <Compile Include="Items\IEquipable.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\ItemGenerator.cs" />
     <Compile Include="Parser\AbilityStats.cs" />
@@ -70,10 +72,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shop.cs" />
     <Compile Include="Parser\StatParser.cs" />
+    <Compile Include="Warriors\Equipment.cs" />
     <Compile Include="Warriors\Monster.cs" />
     <Compile Include="Parser\MonsterStats.cs" />
     <Compile Include="Warriors\Player.cs" />
     <Compile Include="Warriors\Warrior.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="items.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="monsters.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="monster_abilities.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

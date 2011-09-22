@@ -82,36 +82,36 @@ namespace SimpleGame
 
 		private string equippedWeaponStats()
 		{
-			if (shop.Customer.EquippedWeapon.ID == 0)
-			{
+			//if (shop.Customer.EquippedWeapon.ID == 0)
+			//{
 				 return "none";
-			}
-			else if (shop.Customer.EquippedWeapon.Type == ItemType.Weapon)
-			{
-				Weapon current = (Weapon)shop.Customer.EquippedWeapon;
-				return current.Name + " (" + current.Damage + " damage)";
-		 	}
-			else
-			{
-				return shop.Customer.EquippedWeapon.Name;
-			}
+			//}
+			//else if (shop.Customer.EquippedWeapon.Type == ItemType.Weapon)
+			//{
+			//    Weapon current = (Weapon)shop.Customer.EquippedWeapon;
+			//    return current.Name + " (" + current.Damage + " damage)";
+			//}
+			//else
+			//{
+			//    return shop.Customer.EquippedWeapon.Name;
+			//}
 		}
 
 		private string equippedArmourStats()
 		{
-			if (shop.Customer.EquippedArmour.ID == 0)
-			{
+			//if (shop.Customer.EquippedArmour.ID == 0)
+			//{
 				return "none";
-			}
-			else if (shop.Customer.EquippedArmour.Type == ItemType.Armour)
-			{
-				Armour current = (Armour)shop.Customer.EquippedArmour;
-				return current.Name + " (" + current.Protection + " protection)";
-			}
-			else
-			{
-				return shop.Customer.EquippedArmour.Name;
-			}
+			//}
+			//else if (shop.Customer.EquippedArmour.Type == ItemType.Armour)
+			//{
+			//    Armour current = (Armour)shop.Customer.EquippedArmour;
+			//    return current.Name + " (" + current.Protection + " protection)";
+			//}
+			//else
+			//{
+			//    return shop.Customer.EquippedArmour.Name;
+			//}
 		}
 
 		private void setupNewInventoryPriceLabel(int number, List<Label> inventoryPriceLabel, TableLayoutPanel inventoryPanel, List<Item> inventory)
@@ -223,21 +223,21 @@ namespace SimpleGame
 			info += Environment.NewLine;
 
 
-			if ((item.Type == ItemType.Weapon && shop.Customer.EquippedWeapon.ID == item.ID) || (item.Type == ItemType.Armour && shop.Customer.EquippedArmour.ID == item.ID))
-			{
+			//if ((item.Type == ItemType.Weapon && shop.Customer.EquippedWeapon.ID == item.ID) || (item.Type == ItemType.Armour && shop.Customer.EquippedArmour.ID == item.ID))
+			//{
 				info += "(already equipped)";
 				boxtype = MessageBoxButtons.OK;
-			}
-			else if (item.Type == ItemType.Consumable)
-			{
-				boxtype = MessageBoxButtons.OK;
-			}
-			else
-			{
-				info += Environment.NewLine + "Equip this item?";
-				boxtitle = "Equip " + item.Name;
-				boxtype = MessageBoxButtons.YesNo;
-			}
+			//}
+			//else if (item.Type == ItemType.Consumable)
+			//{
+			//    boxtype = MessageBoxButtons.OK;
+			//}
+			//else
+			//{
+			//    info += Environment.NewLine + "Equip this item?";
+			//    boxtitle = "Equip " + item.Name;
+			//    boxtype = MessageBoxButtons.YesNo;
+			//}
 
 			var result = MessageBox.Show(info, "Buy " + item.Name, boxtype);
 
@@ -245,12 +245,12 @@ namespace SimpleGame
 			{
 				if (item.Type == ItemType.Weapon)
 				{
-					shop.Customer.EquipWeapon((Weapon)item);
+					shop.Customer.Equipment.EquipRightHandWeapon((Weapon)item);
 					showPlayerInventory();
 				}
 				else if (item.Type == ItemType.Armour)
 				{
-					shop.Customer.EquipArmour((Armour)item);
+					shop.Customer.Equipment.EquipArmour((Armour)item);
 					showPlayerInventory();
 				}
 			}

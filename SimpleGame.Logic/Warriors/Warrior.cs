@@ -115,7 +115,7 @@ namespace SimpleGame.Logic
 			}
 			IEffect effect = primaryAbility.UseAbility();
 			effect.Resolve();
-			return effect.CombatMessage();
+			return effect.CombatMessage;
 		}
 		public string UseSecondaryAbility()
 		{
@@ -125,7 +125,7 @@ namespace SimpleGame.Logic
 			}
 			IEffect effect = secondaryAbility.UseAbility();
 			effect.Resolve();
-			return effect.CombatMessage();
+			return effect.CombatMessage;
 		}
 		public string UseTertiaryAbility()
 		{
@@ -135,7 +135,7 @@ namespace SimpleGame.Logic
 			}
 			IEffect effect = tertiaryAbility.UseAbility();
 			effect.Resolve();
-			return effect.CombatMessage();
+			return effect.CombatMessage;
 		}
 		public Ability PrimaryAbility
 		{

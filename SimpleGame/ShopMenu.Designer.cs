@@ -159,8 +159,8 @@
 			this.ShopInventoryPanel.Location = new System.Drawing.Point(245, 123);
 			this.ShopInventoryPanel.Name = "ShopInventoryPanel";
 			this.ShopInventoryPanel.RowCount = 1;
-			this.ShopInventoryPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-			this.ShopInventoryPanel.Size = new System.Drawing.Size(236, 54);
+			this.ShopInventoryPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+			this.ShopInventoryPanel.Size = new System.Drawing.Size(236, 58);
 			this.ShopInventoryPanel.TabIndex = 2;
 			// 
 			// label3
@@ -199,8 +199,8 @@
 			this.PlayerInventoryPanel.Location = new System.Drawing.Point(3, 123);
 			this.PlayerInventoryPanel.Name = "PlayerInventoryPanel";
 			this.PlayerInventoryPanel.RowCount = 1;
-			this.PlayerInventoryPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-			this.PlayerInventoryPanel.Size = new System.Drawing.Size(236, 54);
+			this.PlayerInventoryPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+			this.PlayerInventoryPanel.Size = new System.Drawing.Size(236, 58);
 			this.PlayerInventoryPanel.TabIndex = 5;
 			// 
 			// LeavePicture

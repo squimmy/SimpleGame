@@ -8,6 +8,7 @@ namespace SimpleGame.Logic
 	public abstract class Ability
 	{
 		protected int id;
+		protected string name;
 		protected int timer;
 		protected int speedBonus;
 		protected int effectiveness;
@@ -20,6 +21,10 @@ namespace SimpleGame.Logic
 		public int ID
 		{
 			get { return id; }
+		}
+		public string Name
+		{
+			get { return name; }
 		}
 		protected int accuracy
 		{
@@ -38,6 +43,10 @@ namespace SimpleGame.Logic
 		{
 			get { return this.speed; }
 		}
+		public int Effectiveness
+		{
+			get { return effectiveness; }
+		}
 		public EffectType EffectType
 		{
 			get { return effectType; }
@@ -45,7 +54,11 @@ namespace SimpleGame.Logic
 
 		public void IncrementTimer()
 		{
-			this.timer++;
+			if (this.speed > 1 && this.timer <= 1000)
+			{
+				this.timer += this.speed;
+			}
+			
 		}
 		public void ResetTimer()
 		{
@@ -53,7 +66,7 @@ namespace SimpleGame.Logic
 		}
 		public bool Ready
 		{
-			get { return timer >= (1000 / speed); }
+			get { return timer >= 1000; }
 		}
 	}
 }

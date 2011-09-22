@@ -57,9 +57,9 @@ namespace SimpleGame.Logic
 			}
 		}
 
-		public string CombatMessage()
+		public string CombatMessage
 		{
-			return this.combatMessage;
+			get { return this.combatMessage; }
 		}
 	}
 }

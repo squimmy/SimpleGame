@@ -12,9 +12,9 @@ namespace SimpleGame.Logic
 		{
 		}
 
-		public string CombatMessage()
+		public string CombatMessage
 		{
-			return null;
+			get { return null; }
 		}
 	}
 }

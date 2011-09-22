@@ -33,9 +33,12 @@ namespace SimpleGame
 		}
 		private void ShopPicture_Click(object sender, EventArgs e)
 		{
-			ShopMenu goshopping = new ShopMenu(player);
-			goshopping.ShowDialog();
-			this.UpdateText();
+			//ShopMenu goshopping = new ShopMenu(player);
+			//goshopping.ShowDialog();
+			//this.UpdateText();
+			Inventory inventory = new Inventory(player);
+			inventory.ShowDialog();
+
 		}
 		private void SavePicture_Click(object sender, EventArgs e)
 		{

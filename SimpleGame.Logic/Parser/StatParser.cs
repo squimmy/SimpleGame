@@ -31,22 +31,26 @@ namespace SimpleGame.Logic
 		{
 			switch (text)
 			{
-				case "cut":
-					return DamageType.Cut;
-				case "stab":
-					return DamageType.Stab;
-				case "crush":
-					return DamageType.Crush;
-				case "fire":
-					return DamageType.Fire;
-				case "ice":
-					return DamageType.Ice;
-				case "magic":
-					return DamageType.Magic;
-				case "holy":
-					return DamageType.Holy;
-				default:
-					return DamageType.Crush;
+				case "cut":		return DamageType.Cut;
+				case "stab":	return DamageType.Stab;
+				case "crush":	return DamageType.Crush;
+				case "fire":	return DamageType.Fire;
+				case "ice":		return DamageType.Ice;
+				case "magic":	return DamageType.Magic;
+				case "holy":	return DamageType.Holy;
+				default:		return DamageType.Crush;
+			}
+		}
+		public static ArmourLocation ParseArmourLocation(string text)
+		{
+			switch (text)
+			{
+				case "head":	return ArmourLocation.Head;
+				case "torso":	return ArmourLocation.Torso;
+				case "hands":	return ArmourLocation.Hands;
+				case "legs":	return ArmourLocation.Legs;
+				case "feet":	return ArmourLocation.Feet;
+				default:		return ArmourLocation.Torso;
 			}
 		}
 

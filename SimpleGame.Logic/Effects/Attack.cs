@@ -65,9 +65,9 @@ namespace SimpleGame.Logic
 
 			this.combatMessage = message.CapitaliseFirstLetter();
 		}
-		public string CombatMessage()
+		public string CombatMessage
 		{
-			return this.combatMessage;
+			get { return this.combatMessage; }
 		}
 	}
 }

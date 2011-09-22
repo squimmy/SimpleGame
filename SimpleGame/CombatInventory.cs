@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SimpleGame.Logic;
+using SimpleGame.Logic.InventoryExtensions;
 
 namespace SimpleGame
 {
@@ -14,33 +15,32 @@ namespace SimpleGame
 	{
 		Battle battle;
 
-		private List<PictureBox> inventoryPicture = new List<PictureBox>();
-		private List<Label> inventoryLabel = new List<Label>();
-		private List<Consumable> inventoryConsumables = new List<Consumable>();
-
-
+		private List<PictureBox> inventoryPicture;
+		private List<Label> inventoryLabel;
+		
 		public CombatInventory(Battle battle)
 		{
+			
 			InitializeComponent();
+			inventoryPicture = new List<PictureBox>();
+			inventoryLabel = new List<Label>();
+
 			this.battle = battle;
-			getpotionlist();
 			showPlayerInventory();
 
 		}
 
 		private void showPlayerInventory()
 		{
-			getpotionlist();
-
 			for (int i = 0; i < inventoryPicture.Count; i++)
 			{
 				this.InventoryPanel.Controls.Remove(inventoryPicture[i]);
 				this.InventoryPanel.Controls.Remove(inventoryLabel[i]);
 			}
 
-			this.InventoryPanel.RowCount = inventoryConsumables.Count;
+			this.InventoryPanel.RowCount = battle.player.Inventory.Consumables().Count;
 
-			if (inventoryConsumables.Count == 0)
+			if (battle.player.Inventory.Consumables().Count == 0)
 			{
 				this.InventoryPanel.CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
 			}
@@ -54,7 +54,7 @@ namespace SimpleGame
 			inventoryPicture = new List<PictureBox>();
 			inventoryLabel = new List<Label>();
 
-			for (int i = 0; i < inventoryConsumables.Count; i++)
+			for (int i = 0; i < battle.player.Inventory.Consumables().Count; i++)
 			{
 				this.inventoryPicture.Add(new PictureBox());
 				setupNewInventoryPicture(i);
@@ -69,8 +69,8 @@ namespace SimpleGame
 		{
 			inventoryPicture[number].Anchor = AnchorStyles.None;
 			inventoryPicture[number].Size = new System.Drawing.Size(40, 40);
-			inventoryPicture[number].Image = Art.GetItemImage(inventoryConsumables[number].ID);
-			inventoryPicture[number].Tag = inventoryConsumables[number];
+			inventoryPicture[number].Image = Art.GetItemImage(battle.player.Inventory.Consumables()[number].ID);
+			inventoryPicture[number].Tag = battle.player.Inventory.Consumables()[number];
 
 			inventoryPicture[number].Click += new EventHandler(useItem_Click);
 
@@ -80,7 +80,7 @@ namespace SimpleGame
 		private void setupNewInventoryLabel(int number)
 		{
 			inventoryLabel[number].Anchor = AnchorStyles.None;
-			inventoryLabel[number].Text = inventoryConsumables[number].Name;
+			inventoryLabel[number].Text = battle.player.Inventory.Consumables()[number].Name;
 			InventoryPanel.Controls.Add(inventoryLabel[number], 1, number);
 		}
 
@@ -91,17 +91,6 @@ namespace SimpleGame
 
 			battle.UseItem(selection);
 			this.Close();
-		}
-
-		private void getpotionlist()
-		{
-			List<Item> templist = battle.player.Inventory.FindAll(delegate(Item target) { return target.Type == ItemType.Consumable; });
-			inventoryConsumables = new List<Consumable>();
-
-			foreach (Item item in templist)
-			{
-				inventoryConsumables.Add((Consumable)item);
-			}
 		}
 
 		private void cancelButton_Click(object sender, EventArgs e)

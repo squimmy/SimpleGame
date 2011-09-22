@@ -16,9 +16,14 @@ namespace SimpleGame.Logic
 		{
 			List<Item> inventory = new List<Item>();
 			inventory.Add(ItemGenerator.CreateItem(7));
-			Weapon weapon = (Weapon)ItemGenerator.CreateItem(-1);
-			Armour armour = (Armour)ItemGenerator.CreateItem(-2);
-			Player player = new Player(name, 10, 1, 100, 0, 80, 3, 7, 1001, inventory, weapon, armour);
+			Weapon weapon = new Weapon();
+			Armour headArmour = new Armour(ArmourLocation.Head);
+			Armour torsoArmour = new Armour(ArmourLocation.Torso);
+			Armour handArmour = new Armour(ArmourLocation.Hands);
+			Armour legArmour = new Armour(ArmourLocation.Legs);
+			Armour feetArmour = new Armour(ArmourLocation.Feet);
+
+			Player player = new Player(name, 10, 1, 100, 0, 80, 3, 7, 1001, inventory, weapon, headArmour, torsoArmour, handArmour, legArmour, feetArmour);
 			GameInProgress = true;
 			return player;
 		}
