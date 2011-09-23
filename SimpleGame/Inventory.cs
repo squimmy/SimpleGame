@@ -16,8 +16,7 @@ namespace SimpleGame
 		private EquipmentSlot? selection;
 		private List<Logic.Item> inventoryToDisplay;
 		private List<InventoryEntry> inventoryEntries;
-		private Dictionary<EquipmentSlot, PictureBox> equipmentPictureBoxes;
-		private Dictionary<EquipmentSlot, Label> equipmentLabels;
+		private Dictionary<EquipmentSlot, InventoryEntry> equippedItems;
 		private Logic.Player player;
 		private Logic.Item selectedEquipment;
 		private Logic.Item selectedItem;
@@ -39,28 +38,17 @@ namespace SimpleGame
 
 			this.player = player;
 			this.attackDefenseInfo.Player = player;
-			this.equipmentPictureBoxes = new Dictionary<EquipmentSlot, PictureBox>()
+			this.equippedItems = new Dictionary<EquipmentSlot, InventoryEntry>()
 			{
-				{ EquipmentSlot.RightHand, rightHandItemPictureBox },
-				{ EquipmentSlot.LeftHand, leftHandItemPictureBox },
-				{ EquipmentSlot.Head, headItemPictureBox },
-				{ EquipmentSlot.Torso, torsoItemPictureBox },
-				{ EquipmentSlot.Hands, handItemPictureBox},
-				{ EquipmentSlot.Legs, legItemPictureBox},
-				{ EquipmentSlot.Feet, feetItemPictureBox},
+				{ EquipmentSlot.RightHand, mainHandEquipment },
+				{ EquipmentSlot.LeftHand, offHandEquipment },
+				{ EquipmentSlot.Head, headEquipment },
+				{ EquipmentSlot.Torso, torsoEquipment },
+				{ EquipmentSlot.Hands, handEquipment },
+				{ EquipmentSlot.Legs, legEquipment },
+				{ EquipmentSlot.Feet, feetEquipment },
 			};
-			this.equipmentLabels = new Dictionary<EquipmentSlot, Label>()
-			{
-				{ EquipmentSlot.RightHand, rightHandItemLabel },
-				{ EquipmentSlot.LeftHand, leftHandItemLabel},
-				{ EquipmentSlot.Head, headItemLabel},
-				{ EquipmentSlot.Torso, torsoItemLabel },
-				{ EquipmentSlot.Hands, handItemLabel},
-				{ EquipmentSlot.Legs, legItemLabel},
-				{ EquipmentSlot.Feet, feetItemLabel},
-			};
-
-
+			this.offHandEquipment.ImageFlipped = true;
 			this.inventoryToDisplay = new List<Logic.Item>();
 
 			this.inventoryEntries = new List<InventoryEntry>();
@@ -83,17 +71,6 @@ namespace SimpleGame
 			this.attackDefenseInfo.UpdateLabels();
 			this.updateEquipmentIcons();
 
-			this.headItemLabel.Click += new EventHandler(this.headClicked);
-			this.headItemPictureBox.Click += new EventHandler(this.headClicked);
-			this.torsoItemLabel.Click += new EventHandler(this.torsoClicked);
-			this.torsoItemPictureBox.Click += new EventHandler(this.torsoClicked);
-			this.handItemLabel.Click += new EventHandler(this.handsClicked);
-			this.handItemPictureBox.Click += new EventHandler(this.handsClicked);
-			this.legItemLabel.Click += new EventHandler(this.legsClicked);
-			this.legItemPictureBox.Click += new EventHandler(this.legsClicked);
-			this.feetItemLabel.Click += new EventHandler(this.feetClicked);
-			this.feetItemPictureBox.Click += new EventHandler(this.feetClicked);
-
 			this.inventoryFilterBox.SelectedValueChanged += new EventHandler(displayInventory);
 			this.inventorySubFilter.SelectedValueChanged += new EventHandler(displayInventory);
 			this.inventoryFilterBox.SelectedIndex = 0;
@@ -102,31 +79,21 @@ namespace SimpleGame
 
 		private void updateEquipmentIcons()
 		{
-			this.rightHandItemPictureBox.Image = Art.GetItemImage(player.Equipment.RightHandWeapon.ID);
-			this.rightHandItemLabel.Text = player.Equipment.RightHandWeapon.Name;
+			this.mainHandEquipment.Item = player.Equipment.RightHandWeapon;
 
 			if (player.Equipment.LeftHandWeapon != null)
 			{
-				this.leftHandItemPictureBox.Image = Art.GetItemImage(player.Equipment.LeftHandWeapon.ID);
-				this.leftHandItemPictureBox.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
-				this.leftHandItemLabel.Text = player.Equipment.LeftHandWeapon.Name;
+				this.offHandEquipment.Item = player.Equipment.LeftHandWeapon;
 			}
 			else
 			{
-				this.leftHandItemPictureBox.Image = null;
-				this.leftHandItemLabel.Text = null;
+				this.offHandEquipment.Item = null;
 			}
-
-			this.headItemPictureBox.Image = Art.GetItemImage(player.Equipment.EquippedArmour[Logic.ArmourLocation.Head].ID);
-			this.headItemLabel.Text = player.Equipment.EquippedArmour[Logic.ArmourLocation.Head].Name;
-			this.torsoItemPictureBox.Image = Art.GetItemImage(player.Equipment.EquippedArmour[SimpleGame.Logic.ArmourLocation.Torso].ID);
-			this.torsoItemLabel.Text = player.Equipment.EquippedArmour[Logic.ArmourLocation.Torso].Name;
-			this.handItemPictureBox.Image = Art.GetItemImage(player.Equipment.EquippedArmour[SimpleGame.Logic.ArmourLocation.Hands].ID);
-			this.handItemLabel.Text = player.Equipment.EquippedArmour[Logic.ArmourLocation.Hands].Name;
-			this.legItemPictureBox.Image = Art.GetItemImage(player.Equipment.EquippedArmour[SimpleGame.Logic.ArmourLocation.Legs].ID);
-			this.legItemLabel.Text = player.Equipment.EquippedArmour[Logic.ArmourLocation.Legs].Name;
-			this.feetItemPictureBox.Image = Art.GetItemImage(player.Equipment.EquippedArmour[SimpleGame.Logic.ArmourLocation.Feet].ID);
-			this.feetItemLabel.Text = player.Equipment.EquippedArmour[Logic.ArmourLocation.Feet].Name;
+			this.headEquipment.Item = player.Equipment.EquippedArmour[Logic.ArmourLocation.Head];
+			this.torsoEquipment.Item = player.Equipment.EquippedArmour[Logic.ArmourLocation.Torso];
+			this.handEquipment.Item = player.Equipment.EquippedArmour[Logic.ArmourLocation.Hands];
+			this.legEquipment.Item = player.Equipment.EquippedArmour[Logic.ArmourLocation.Legs];
+			this.feetEquipment.Item = player.Equipment.EquippedArmour[Logic.ArmourLocation.Feet];
 		}
 		private void updateSelectedEquipmentInfo()
 		{
@@ -142,6 +109,7 @@ namespace SimpleGame
 			else
 				this.selectedItemInfo.ClearPanel();
 		}
+
 		private void characterImage_Click(object sender, EventArgs e)
 		{
 			MouseEventArgs mouse = (MouseEventArgs)e;
@@ -155,11 +123,11 @@ namespace SimpleGame
 			}
 			else if (legsLocation1.Contains(mouse.Location) || legsLocation2.Contains(mouse.Location))
 			{
-				legsClicked(sender, e);
+				legClicked(sender, e);
 			}
 			else if (handsLocation.Contains(mouse.Location))
 			{
-				handsClicked(sender, e);
+				handClicked(sender, e);
 			}
 			else if (feetLocation.Contains(mouse.Location))
 			{
@@ -169,19 +137,6 @@ namespace SimpleGame
 			{
 				deselectAllEquipment();
 			}
-		}
-
-		private void deselectAllEquipment()
-		{
-			this.clearEquipmentHighlighting();
-			this.selectedEquipment = null;
-			this.updateSelectedEquipmentInfo();
-		}
-		private void deselectAllItems()
-		{
-			this.selectedItem = null;
-			this.clearItemHighlighting();
-			this.updateSelectedItemInfo();
 		}
 		private void headClicked(object sender, EventArgs e)
 		{
@@ -205,7 +160,7 @@ namespace SimpleGame
 				this.selectLocation(EquipmentSlot.Torso);
 			}
 		}
-		private void legsClicked(object sender, EventArgs e)
+		private void legClicked(object sender, EventArgs e)
 		{
 			if (selection == EquipmentSlot.Legs)
 			{
@@ -216,7 +171,7 @@ namespace SimpleGame
 				this.selectLocation(EquipmentSlot.Legs);
 			}
 		}
-		private void handsClicked(object sender, EventArgs e)
+		private void handClicked(object sender, EventArgs e)
 		{
 			if (selection == EquipmentSlot.Hands)
 			{
@@ -238,7 +193,7 @@ namespace SimpleGame
 				this.selectLocation(EquipmentSlot.Feet);
 			}
 		}
-		private void rightHandClicked(object sender, EventArgs e)
+		private void mainHandClicked(object sender, EventArgs e)
 		{
 			if (selection == EquipmentSlot.RightHand)
 			{
@@ -247,10 +202,9 @@ namespace SimpleGame
 			else
 			{
 				this.selectLocation(EquipmentSlot.RightHand);
-				// change this to use a similar method to "selectLocation", e.g. "SelectRightHand" or w/e
 			}
 		}
-		private void leftHandClicked(object sender, EventArgs e)
+		private void offHandClicked(object sender, EventArgs e)
 		{
 			if (selection == EquipmentSlot.LeftHand)
 			{
@@ -259,9 +213,82 @@ namespace SimpleGame
 			else
 			{
 				this.selectLocation(EquipmentSlot.LeftHand);
-				// change this to use a similar method to "selectLocation", e.g. "SelectRightHand" or w/e
 			}
 		}
+		private void highlightSelection(EquipmentSlot location)
+		{
+			this.equippedItems[location].Highlight();
+			switch (location)
+			{
+				case EquipmentSlot.Head:
+					this.characterImage.Image = SimpleGame.Properties.Resources.head_selected;
+					break;
+				case EquipmentSlot.Torso:
+					this.characterImage.Image = SimpleGame.Properties.Resources.torso_selected;
+					break;
+				case EquipmentSlot.Hands:
+					this.characterImage.Image = SimpleGame.Properties.Resources.hands_selected;
+					break;
+				case EquipmentSlot.Legs:
+					this.characterImage.Image = SimpleGame.Properties.Resources.legs_selected;
+					break;
+				case EquipmentSlot.Feet:
+					this.characterImage.Image = SimpleGame.Properties.Resources.feet_selected;
+					break;
+				case EquipmentSlot.RightHand:
+					this.rightHandLabel.ForeColor = Color.Red;
+					break;
+				case EquipmentSlot.LeftHand:
+					this.leftHandLabel.ForeColor = Color.Red;
+					break;
+				default:
+					break;
+			}
+		}
+
+		private void selectLocation(EquipmentSlot location)
+		{
+			this.selection = location;
+			this.selectedEquipment = getLocationItem(location);
+
+			this.clearEquipmentHighlighting();
+			this.highlightSelection(location);
+			this.matchInventoryFilterToEquipmentSelection(location);
+
+			this.updateSelectedEquipmentInfo();
+		}
+		private Logic.Item getLocationItem(EquipmentSlot location)
+		{
+			switch (location)
+			{
+				case EquipmentSlot.Head: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Head];
+				case EquipmentSlot.Torso: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Torso];
+				case EquipmentSlot.Hands: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Hands];
+				case EquipmentSlot.Legs: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Legs];
+				case EquipmentSlot.Feet: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Feet];
+				case EquipmentSlot.RightHand: return player.Equipment.RightHandWeapon;
+				case EquipmentSlot.LeftHand: return player.Equipment.LeftHandWeapon;
+				default: return null;
+			}
+		}
+
+		private void deselectAllEquipment()
+		{
+			this.clearEquipmentHighlighting();
+			this.selectedEquipment = null;
+			this.updateSelectedEquipmentInfo();
+		}
+		private void clearEquipmentHighlighting()
+		{
+			this.characterImage.Image = SimpleGame.Properties.Resources.none_selected;
+			this.rightHandLabel.ForeColor = SystemColors.ControlText;
+			this.leftHandLabel.ForeColor = SystemColors.ControlText;
+			foreach (var item in equippedItems.Values)
+			{
+				item.UnHighlight();
+			}
+		}
+
 
 		private void displayInventory()
 		{
@@ -284,6 +311,21 @@ namespace SimpleGame
 				entry.MouseDown += new MouseEventHandler(item_MouseDown);
 			}
 		}
+		private void displayInventory(object sender, EventArgs e)
+		{
+			displayInventory();
+		}
+		private void createInventoryEntries()
+		{
+			this.inventoryEntries.Clear();
+			foreach (Logic.Item item in inventoryToDisplay)
+			{
+				InventoryEntry entry = new InventoryEntry();
+				entry.Item = item;
+				inventoryEntries.Add(entry);
+			}
+		}
+
 
 		private void itemClicked(object sender, EventArgs e)
 		{
@@ -300,23 +342,82 @@ namespace SimpleGame
 				this.selectItem(entry.Item);
 			}
 		}
-
 		private void selectItem(Logic.Item item)
 		{
 			this.selectedItem = item;
 			this.updateSelectedItemInfo();
 		}
 
-
+		private void deselectAllItems()
+		{
+			this.selectedItem = null;
+			this.clearItemHighlighting();
+			this.updateSelectedItemInfo();
+		}
+		private void clearItemHighlighting()
+		{
+			foreach (var entry in this.inventoryEntries)
+			{
+				entry.UnHighlight();
+			}
+		}
+		
 		private void item_MouseDown(object sender, EventArgs e)
 		{
 			DoDragDrop((sender as Control).Tag, DragDropEffects.Move);
 		}
-
-
-		private void displayInventory(object sender, EventArgs e)
+		
+		private void setSubFilter(Logic.ItemType type)
 		{
-			displayInventory();
+			switch (type)
+			{
+				case SimpleGame.Logic.ItemType.None:
+					this.subFilterMode = Logic.ItemType.None;
+					if (inventorySubFilter.Visible)
+						this.inventorySubFilter.Hide();
+					this.inventorySubFilter.SelectedIndex = 0;
+					break;
+				case SimpleGame.Logic.ItemType.Weapon:
+					this.subFilterMode = Logic.ItemType.Weapon;
+					if (!inventorySubFilter.Visible)
+						this.inventorySubFilter.Show();
+					this.inventorySubFilter.Items.Clear();
+					this.inventorySubFilter.Items.AddRange(new object[]
+					{
+						"All",
+						"Small",
+						"Medium",
+						"Large"
+					});
+					this.inventorySubFilter.SelectedIndex = 0;
+					applySubFilter();
+					break;
+				case SimpleGame.Logic.ItemType.Armour:
+					this.subFilterMode = Logic.ItemType.Armour;
+					if (!inventorySubFilter.Visible)
+						this.inventorySubFilter.Show();
+					this.inventorySubFilter.Items.Clear();
+					this.inventorySubFilter.Items.AddRange(new object[]
+					{
+						"All",
+						"Head",
+						"Torso",
+						"Hands",
+						"Legs",
+						"Feet"
+					});
+					this.inventorySubFilter.SelectedIndex = 0;
+					applySubFilter();
+					break;
+				case SimpleGame.Logic.ItemType.Consumable:
+					this.subFilterMode = Logic.ItemType.Consumable;
+					if (inventorySubFilter.Visible)
+						this.inventorySubFilter.Hide();
+					this.inventorySubFilter.SelectedIndex = 0;
+					break;
+				default:
+					break;
+			}
 		}
 		private void applyInventoryFilter()
 		{
@@ -406,113 +507,6 @@ namespace SimpleGame
 					break;
 			}
 		}
-		private void createInventoryEntries()
-		{
-			this.inventoryEntries.Clear();
-			foreach (Logic.Item item in inventoryToDisplay)
-			{
-				InventoryEntry entry = new InventoryEntry();
-				entry.Item = item;
-				inventoryEntries.Add(entry);
-			}
-		}
-
-		private void setSubFilter(Logic.ItemType type)
-		{
-			switch (type)
-			{
-				case SimpleGame.Logic.ItemType.None:
-					this.subFilterMode = Logic.ItemType.None;
-					if (inventorySubFilter.Visible)
-						this.inventorySubFilter.Hide();
-					this.inventorySubFilter.SelectedIndex = 0;
-					break;
-				case SimpleGame.Logic.ItemType.Weapon:
-					this.subFilterMode = Logic.ItemType.Weapon;
-					if (!inventorySubFilter.Visible)
-						this.inventorySubFilter.Show();
-					this.inventorySubFilter.Items.Clear();
-					this.inventorySubFilter.Items.AddRange(new object[]
-					{
-						"All",
-						"Small",
-						"Medium",
-						"Large"
-					});
-					this.inventorySubFilter.SelectedIndex = 0;
-					applySubFilter();
-					break;
-				case SimpleGame.Logic.ItemType.Armour:
-					this.subFilterMode = Logic.ItemType.Armour;
-					if (!inventorySubFilter.Visible)
-						this.inventorySubFilter.Show();
-					this.inventorySubFilter.Items.Clear();
-					this.inventorySubFilter.Items.AddRange(new object[]
-					{
-						"All",
-						"Head",
-						"Torso",
-						"Hands",
-						"Legs",
-						"Feet"
-					});
-					this.inventorySubFilter.SelectedIndex = 0;
-					applySubFilter();
-					break;
-				case SimpleGame.Logic.ItemType.Consumable:
-					this.subFilterMode = Logic.ItemType.Consumable;
-					if (inventorySubFilter.Visible)
-						this.inventorySubFilter.Hide();
-					this.inventorySubFilter.SelectedIndex = 0;
-					break;
-				default:
-					break;
-			}
-		}
-
-		private void selectLocation(EquipmentSlot location)
-		{
-			this.selection = location;
-			this.selectedEquipment = getLocationItem(location);
-
-			this.clearEquipmentHighlighting();
-			this.highlightSelection(location);
-			this.matchInventoryFilterToEquipmentSelection(location);
-
-			this.updateSelectedEquipmentInfo();
-		}
-
-		private void highlightSelection(EquipmentSlot location)
-		{
-			this.equipmentLabels[location].BackColor = Color.FromArgb(229, 244, 255);
-			this.equipmentPictureBoxes[location].BackColor = Color.FromArgb(229, 244, 255);
-			switch (location)
-			{
-				case EquipmentSlot.Head:
-					this.characterImage.Image = SimpleGame.Properties.Resources.head_selected;
-					break;
-				case EquipmentSlot.Torso:
-					this.characterImage.Image = SimpleGame.Properties.Resources.torso_selected;
-					break;
-				case EquipmentSlot.Hands:
-					this.characterImage.Image = SimpleGame.Properties.Resources.hands_selected;
-					break;
-				case EquipmentSlot.Legs:
-					this.characterImage.Image = SimpleGame.Properties.Resources.legs_selected;
-					break;
-				case EquipmentSlot.Feet:
-					this.characterImage.Image = SimpleGame.Properties.Resources.feet_selected;
-					break;
-				case EquipmentSlot.RightHand:
-					this.rightHandLabel.ForeColor = Color.Red;
-					break;
-				case EquipmentSlot.LeftHand:
-					this.leftHandLabel.ForeColor = Color.Red;
-					break;
-				default:
-					break;
-			}
-		}
 		private void matchInventoryFilterToEquipmentSelection(EquipmentSlot location)
 		{
 			switch (location)
@@ -547,42 +541,6 @@ namespace SimpleGame
 					break;
 				default:
 					break;
-			}
-		}
-		private void clearEquipmentHighlighting()
-		{
-			this.characterImage.Image = SimpleGame.Properties.Resources.none_selected;
-			this.rightHandLabel.ForeColor = SystemColors.ControlText;
-			this.leftHandLabel.ForeColor = SystemColors.ControlText;
-			foreach (PictureBox pictureBox in equipmentPictureBoxes.Values)
-			{
-				pictureBox.BackColor = SystemColors.Control;
-			}
-			foreach (Label label in equipmentLabels.Values)
-			{
-				label.BackColor = SystemColors.Control;
-			}
-		}
-		private void clearItemHighlighting()
-		{
-			foreach (var entry in this.inventoryEntries)
-			{
-				entry.UnHighlight();
-			}
-		}
-
-		private Logic.Item getLocationItem(EquipmentSlot location)
-		{
-			switch (location)
-			{
-				case EquipmentSlot.Head: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Head];
-				case EquipmentSlot.Torso: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Torso];
-				case EquipmentSlot.Hands: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Hands];
-				case EquipmentSlot.Legs: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Legs];
-				case EquipmentSlot.Feet: return player.Equipment.EquippedArmour[Logic.ArmourLocation.Feet];
-				case EquipmentSlot.RightHand: return player.Equipment.RightHandWeapon;
-				case EquipmentSlot.LeftHand: return player.Equipment.LeftHandWeapon;
-				default: return null;
 			}
 		}
 	}

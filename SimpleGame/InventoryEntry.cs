@@ -13,10 +13,11 @@ namespace SimpleGame
 	{
 
 		private Logic.Item item;
-		
+		public bool ImageFlipped;
 		public InventoryEntry()
 		{
 			InitializeComponent();
+			this.ImageFlipped = false;
 			this.itemIcon.Click += new EventHandler(this.clicked);
 			this.itemNameLabel.Click += new EventHandler(this.clicked);
 		}
@@ -27,6 +28,8 @@ namespace SimpleGame
 			{
 				this.itemNameLabel.Text = item.Name;
 				this.itemIcon.Image = Art.GetItemImage(item.ID);
+				if (ImageFlipped)
+					this.itemIcon.Image.RotateFlip(RotateFlipType.RotateNoneFlipX);
 			}
 			else
 			{
