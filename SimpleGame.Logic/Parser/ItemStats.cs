@@ -19,6 +19,8 @@ namespace SimpleGame.Logic
 			{
 				case "name":
 					return "unknown";
+				case "info":
+					return "";
 				default:
 					return "0";
 			}

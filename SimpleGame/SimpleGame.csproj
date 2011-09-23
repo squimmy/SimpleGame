@@ -74,6 +74,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttackDefenseInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AttackDefenseInfo.Designer.cs">
+      <DependentUpon>AttackDefenseInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="BattleScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,18 @@
     </Compile>
     <Compile Include="Inventory.Designer.cs">
       <DependentUpon>Inventory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InventoryEntry.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="InventoryEntry.Designer.cs">
+      <DependentUpon>InventoryEntry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ItemInfo.Designer.cs">
+      <DependentUpon>ItemInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
@@ -124,6 +142,9 @@
     <Compile Include="ShopMenu.Designer.cs">
       <DependentUpon>ShopMenu.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AttackDefenseInfo.resx">
+      <DependentUpon>AttackDefenseInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BattleScreen.resx">
       <DependentUpon>BattleScreen.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -138,6 +159,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Inventory.resx">
       <DependentUpon>Inventory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InventoryEntry.resx">
+      <DependentUpon>InventoryEntry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemInfo.resx">
+      <DependentUpon>ItemInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

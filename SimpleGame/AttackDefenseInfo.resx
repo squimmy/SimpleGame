@@ -117,4 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cutDamageIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABmSURBVChTjZLRDQAhCEPZnOEYDFNzEKmcwcQPlddWVLwZ
+        IuKY7RlvotDMXFU3xOAlcwKAAgzhArB6AHAMpyeAIkAtwFG6YsRKh0mcBLrOcJRy6WmcK1J05U+9AHvx
+        PdQYyJyPr7EAzIyo9iITkE4AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="stabDamageIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABdSURBVChTY/hPImAgVj0DA0QpQQ0ghTDFeDUgK8SrAVnh
+        4cOHUUzHsAHZJJDi+vp64jTgUozVBphibKbDNcDcjU5jC3KgGob/O6vCwRjZD7jihwGmmGQNxJgOshUA
+        ScfgJnGFRfMAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="fireDamageIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABnSURBVChTY3gro/IfGf+vV0fho8szUEUDPluw2gDSgEsT
+        bg0n+bBqQtEAM/k/SDHRGkAKPzHANaA7DW4D2HSYYpgGLLZg1/AfCHDYglsDmiZYfGHVMPPmK5ByFFsw
+        NIAEsPoDLakAACspYOPJ+MRJAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="poisonDamageIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABdSURBVChTY9j6TBaClDb6MDAwAEk4Ay7FgKYCK5cURcRa
+        B3cN3GVAEYjtIOsgLsUKIOpA3kH2FFwpsjdBgnBj4UZiihChCKIJ2XBkB0BdjOxwXPYiAhOuAh7ocBEA
+        fdmV67bZJpsAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="electricityDamageIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABeSURBVChTlZBBDgAhCAP7/+fuB7pIgoaKGA8clBlSAD8w
+        FUkAZVmLUNg/TdBB/lcJHZwF9/fpMdmbFn9FusEnIRaOHea7Ep4jqaD52x0qeAlyoROchLh/B2/CDR7C
+        D2QWk7XwaoUzAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="magicDamageIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABpSURBVChTY7D3OPMfGZ/Y//w/MkaXZ4AJwBQt9lzyHxnD
+        xGHqwBpAgiAapBDdRJgYTA1cA7JidFNBcnANIAa6YmRnwtgwTQzIGpCdhu4U6mhADgB0NtwGmATRniYr
+        WGGaYAFAMOJISRoA0c6FgJBFoUYAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="holyDamageIcon.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADrwAAA68AZW8ckkAAABcSURBVChTY3j/ZMN/dPz/E8N/EMYmx4BLMS5NKBpgiv6f
+        5PsPxlhsgmuAKwYpQtOA7DywBgyTYRqw2ESeBhRbiHESLKRI8jRWv+ALJbI0YPgFS2xjxDSyJmxJAwDS
+        wM2Yfa8nsAAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>
