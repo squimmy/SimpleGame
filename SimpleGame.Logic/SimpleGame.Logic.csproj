@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="items.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="monsters.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

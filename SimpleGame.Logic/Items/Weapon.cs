@@ -32,6 +32,7 @@ namespace SimpleGame.Logic
 			{
 				bonus[stat] = int.Parse(ItemStats.GetStat(itemid, type.ToString().ToLower() + "bonus"));
 			}
+			this.Equippable = true;
 		}
 
 		public Weapon()
@@ -46,7 +47,7 @@ namespace SimpleGame.Logic
 			this.hpbonus = 0;
 			this.damage = 0;
 			this.type = ItemType.Weapon;
-			this.damageType = DamageType.Crush;
+			this.damageType = DamageType.Crushing;
 			this.protection = new Dictionary<DamageType, int>();
 			foreach (DamageType type in Enum.GetValues(typeof(DamageType)))
 			{

@@ -73,6 +73,7 @@ namespace SimpleGame
 
 			this.inventoryFilterBox.SelectedValueChanged += new EventHandler(displayInventory);
 			this.inventorySubFilter.SelectedValueChanged += new EventHandler(displayInventory);
+			this.player.Equipment.LoadoutChanged += new Logic.Equipment.LoadoutChangedEventHandler(Equipment_LoadoutChanged);
 			this.inventoryFilterBox.SelectedIndex = 0;
 			this.inventorySubFilter.SelectedIndex = 0;
 		}
@@ -98,14 +99,14 @@ namespace SimpleGame
 		private void updateSelectedEquipmentInfo()
 		{
 			if (this.selectedEquipment != null)
-				this.selectedEquipmentInfo.ShowItemInfo(selectedEquipment);
+				this.selectedEquipmentInfo.ShowItemInfo(selectedEquipment, player);
 			else
 				this.selectedEquipmentInfo.ClearPanel();
 		}
 		private void updateSelectedItemInfo()
 		{
 			if (this.selectedItem != null)
-				this.selectedItemInfo.ShowItemInfo(selectedItem);
+				this.selectedItemInfo.ShowItemInfo(selectedItem, player);
 			else
 				this.selectedItemInfo.ClearPanel();
 		}
@@ -542,6 +543,12 @@ namespace SimpleGame
 				default:
 					break;
 			}
+		}
+
+		private void Equipment_LoadoutChanged(object sender)
+		{
+			this.updateEquipmentIcons();
+			this.attackDefenseInfo.UpdateLabels();
 		}
 	}
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SimpleGame.Logic
 {
-	public enum DamageType { Cut, Stab, Crush, Fire, Ice, Electricity, Poison, Magic, Holy };
+	public enum DamageType { Cutting, Stabbing, Crushing, Fire, Ice, Electricity, Poison, Magic, Holy };
 	public enum CombatAction { Attack, UseItem };
 	public enum EffectType { Attack, Damage, Heal };
 	public enum ItemType { None, Weapon, Armour, Consumable };

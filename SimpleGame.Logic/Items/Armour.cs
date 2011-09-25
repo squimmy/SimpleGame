@@ -26,6 +26,7 @@ namespace SimpleGame.Logic
 				bonus[stat] = int.Parse(ItemStats.GetStat(itemid, type.ToString().ToLower() + "bonus"));
 			}
 			location = StatParser.ParseArmourLocation(ItemStats.GetStat(itemid, "location"));
+			this.Equippable = true;
 		}
 		public Armour(ArmourLocation location)
 		{

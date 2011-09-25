@@ -19,9 +19,9 @@ namespace SimpleGame
 			InitializeComponent();
 			infoLabels = new Dictionary<Logic.DamageType, Label>()
 			{
-				{Logic.DamageType.Crush, crushInfo},
-				{Logic.DamageType.Cut, cutInfo},
-				{Logic.DamageType.Stab, stabInfo},
+				{Logic.DamageType.Crushing, crushInfo},
+				{Logic.DamageType.Cutting, cutInfo},
+				{Logic.DamageType.Stabbing, stabInfo},
 				{Logic.DamageType.Fire, fireInfo},
 				{Logic.DamageType.Ice, iceInfo},
 				{Logic.DamageType.Poison, poisonInfo},

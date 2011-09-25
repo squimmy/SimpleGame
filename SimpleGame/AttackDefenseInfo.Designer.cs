@@ -203,14 +203,16 @@
 			this.playerProtectionPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
 			this.playerProtectionPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
 			this.playerProtectionPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
-			this.playerProtectionPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.playerProtectionPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 18F));
 			this.playerProtectionPanel.Size = new System.Drawing.Size(194, 163);
 			this.playerProtectionPanel.TabIndex = 1;
 			// 
 			// crushDamageIcon
 			// 
+			this.crushDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.crushDamageIcon.Image = global::SimpleGame.Properties.Resources.crush;
 			this.crushDamageIcon.Location = new System.Drawing.Point(58, 3);
+			this.crushDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.crushDamageIcon.Name = "crushDamageIcon";
 			this.crushDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.crushDamageIcon.TabIndex = 0;
@@ -218,8 +220,10 @@
 			// 
 			// cutDamageIcon
 			// 
+			this.cutDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.cutDamageIcon.Image = ((System.Drawing.Image)(resources.GetObject("cutDamageIcon.Image")));
 			this.cutDamageIcon.Location = new System.Drawing.Point(58, 21);
+			this.cutDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.cutDamageIcon.Name = "cutDamageIcon";
 			this.cutDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.cutDamageIcon.TabIndex = 1;
@@ -227,8 +231,10 @@
 			// 
 			// stabDamageIcon
 			// 
+			this.stabDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.stabDamageIcon.Image = ((System.Drawing.Image)(resources.GetObject("stabDamageIcon.Image")));
 			this.stabDamageIcon.Location = new System.Drawing.Point(58, 39);
+			this.stabDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.stabDamageIcon.Name = "stabDamageIcon";
 			this.stabDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.stabDamageIcon.TabIndex = 2;
@@ -236,8 +242,10 @@
 			// 
 			// fireDamageIcon
 			// 
+			this.fireDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.fireDamageIcon.Image = ((System.Drawing.Image)(resources.GetObject("fireDamageIcon.Image")));
 			this.fireDamageIcon.Location = new System.Drawing.Point(58, 57);
+			this.fireDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.fireDamageIcon.Name = "fireDamageIcon";
 			this.fireDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.fireDamageIcon.TabIndex = 3;
@@ -245,8 +253,10 @@
 			// 
 			// iceDamageIcon
 			// 
+			this.iceDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.iceDamageIcon.Image = global::SimpleGame.Properties.Resources.ice;
 			this.iceDamageIcon.Location = new System.Drawing.Point(58, 75);
+			this.iceDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.iceDamageIcon.Name = "iceDamageIcon";
 			this.iceDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.iceDamageIcon.TabIndex = 4;
@@ -254,8 +264,10 @@
 			// 
 			// poisonDamageIcon
 			// 
+			this.poisonDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.poisonDamageIcon.Image = ((System.Drawing.Image)(resources.GetObject("poisonDamageIcon.Image")));
 			this.poisonDamageIcon.Location = new System.Drawing.Point(58, 93);
+			this.poisonDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.poisonDamageIcon.Name = "poisonDamageIcon";
 			this.poisonDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.poisonDamageIcon.TabIndex = 5;
@@ -263,8 +275,10 @@
 			// 
 			// electricityDamageIcon
 			// 
+			this.electricityDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.electricityDamageIcon.Image = ((System.Drawing.Image)(resources.GetObject("electricityDamageIcon.Image")));
 			this.electricityDamageIcon.Location = new System.Drawing.Point(58, 111);
+			this.electricityDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.electricityDamageIcon.Name = "electricityDamageIcon";
 			this.electricityDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.electricityDamageIcon.TabIndex = 6;
@@ -272,8 +286,10 @@
 			// 
 			// magicDamageIcon
 			// 
+			this.magicDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.magicDamageIcon.Image = ((System.Drawing.Image)(resources.GetObject("magicDamageIcon.Image")));
 			this.magicDamageIcon.Location = new System.Drawing.Point(58, 129);
+			this.magicDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.magicDamageIcon.Name = "magicDamageIcon";
 			this.magicDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.magicDamageIcon.TabIndex = 7;
@@ -281,8 +297,10 @@
 			// 
 			// holyDamageIcon
 			// 
+			this.holyDamageIcon.Anchor = System.Windows.Forms.AnchorStyles.None;
 			this.holyDamageIcon.Image = ((System.Drawing.Image)(resources.GetObject("holyDamageIcon.Image")));
 			this.holyDamageIcon.Location = new System.Drawing.Point(58, 147);
+			this.holyDamageIcon.Margin = new System.Windows.Forms.Padding(0);
 			this.holyDamageIcon.Name = "holyDamageIcon";
 			this.holyDamageIcon.Size = new System.Drawing.Size(12, 12);
 			this.holyDamageIcon.TabIndex = 8;

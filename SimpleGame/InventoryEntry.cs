@@ -18,8 +18,8 @@ namespace SimpleGame
 		{
 			InitializeComponent();
 			this.ImageFlipped = false;
-			this.itemIcon.Click += new EventHandler(this.clicked);
-			this.itemNameLabel.Click += new EventHandler(this.clicked);
+			this.itemIcon.Click += new EventHandler((s, e) => this.OnClick(e));
+			this.itemNameLabel.Click += new EventHandler((s, e) => this.OnClick(e));
 		}
 
 		public void UpdateEntry()
@@ -38,10 +38,6 @@ namespace SimpleGame
 			}
 		}
 
-		private void clicked(object sender, EventArgs e)
-		{
-			this.OnClick(e);
-		}
 
 		public void Highlight()
 		{

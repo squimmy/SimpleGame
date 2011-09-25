@@ -34,6 +34,8 @@
 			this.ItemName = new System.Windows.Forms.Label();
 			this.ItemDetailsPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.ItemInfoLabel = new System.Windows.Forms.Label();
+			this.detailsPanel = new System.Windows.Forms.TableLayoutPanel();
+			this.buttonPanel = new System.Windows.Forms.TableLayoutPanel();
 			this.mainPanel.SuspendLayout();
 			this.ItemTitlePanel.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.ItemPicture)).BeginInit();
@@ -51,9 +53,10 @@
 			this.mainPanel.Location = new System.Drawing.Point(0, 0);
 			this.mainPanel.Margin = new System.Windows.Forms.Padding(3, 20, 3, 20);
 			this.mainPanel.Name = "mainPanel";
-			this.mainPanel.RowCount = 2;
+			this.mainPanel.RowCount = 3;
 			this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46F));
 			this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.mainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
 			this.mainPanel.Size = new System.Drawing.Size(244, 244);
 			this.mainPanel.TabIndex = 5;
 			// 
@@ -99,13 +102,16 @@
 			this.ItemDetailsPanel.ColumnCount = 1;
 			this.ItemDetailsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
 			this.ItemDetailsPanel.Controls.Add(this.ItemInfoLabel, 0, 0);
+			this.ItemDetailsPanel.Controls.Add(this.detailsPanel, 0, 1);
+			this.ItemDetailsPanel.Controls.Add(this.buttonPanel, 0, 2);
 			this.ItemDetailsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.ItemDetailsPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.ItemDetailsPanel.Location = new System.Drawing.Point(3, 49);
 			this.ItemDetailsPanel.Name = "ItemDetailsPanel";
-			this.ItemDetailsPanel.RowCount = 2;
+			this.ItemDetailsPanel.RowCount = 3;
 			this.ItemDetailsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
 			this.ItemDetailsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+			this.ItemDetailsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
 			this.ItemDetailsPanel.Size = new System.Drawing.Size(238, 192);
 			this.ItemDetailsPanel.TabIndex = 1;
 			// 
@@ -120,6 +126,35 @@
 			this.ItemInfoLabel.TabIndex = 0;
 			this.ItemInfoLabel.Text = "selectedItemDescription";
 			this.ItemInfoLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+			// 
+			// detailsPanel
+			// 
+			this.detailsPanel.ColumnCount = 1;
+			this.detailsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+			this.detailsPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.detailsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.detailsPanel.Location = new System.Drawing.Point(3, 63);
+			this.detailsPanel.Name = "detailsPanel";
+			this.detailsPanel.RowCount = 2;
+			this.detailsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.detailsPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.detailsPanel.Size = new System.Drawing.Size(232, 97);
+			this.detailsPanel.TabIndex = 1;
+			// 
+			// buttonPanel
+			// 
+			this.buttonPanel.ColumnCount = 2;
+			this.buttonPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.buttonPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+			this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.buttonPanel.Location = new System.Drawing.Point(0, 163);
+			this.buttonPanel.Margin = new System.Windows.Forms.Padding(0);
+			this.buttonPanel.Name = "buttonPanel";
+			this.buttonPanel.RowCount = 1;
+			this.buttonPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+			this.buttonPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+			this.buttonPanel.Size = new System.Drawing.Size(238, 29);
+			this.buttonPanel.TabIndex = 2;
 			// 
 			// ItemInfo
 			// 
@@ -145,5 +180,7 @@
 		private System.Windows.Forms.Label ItemName;
 		private System.Windows.Forms.TableLayoutPanel ItemDetailsPanel;
 		private System.Windows.Forms.Label ItemInfoLabel;
+		private System.Windows.Forms.TableLayoutPanel detailsPanel;
+		private System.Windows.Forms.TableLayoutPanel buttonPanel;
 	}
 }

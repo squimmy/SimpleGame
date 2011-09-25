@@ -31,14 +31,14 @@ namespace SimpleGame.Logic
 		{
 			switch (text)
 			{
-				case "cut":		return DamageType.Cut;
-				case "stab":	return DamageType.Stab;
-				case "crush":	return DamageType.Crush;
+				case "cutting":		return DamageType.Cutting;
+				case "stabbing":	return DamageType.Stabbing;
+				case "crushing":	return DamageType.Crushing;
 				case "fire":	return DamageType.Fire;
 				case "ice":		return DamageType.Ice;
 				case "magic":	return DamageType.Magic;
 				case "holy":	return DamageType.Holy;
-				default:		return DamageType.Crush;
+				default:		return DamageType.Crushing;
 			}
 		}
 		public static ArmourLocation ParseArmourLocation(string text)

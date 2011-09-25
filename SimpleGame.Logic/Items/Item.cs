@@ -19,6 +19,7 @@ namespace SimpleGame.Logic
 		protected int strengthbonus;
 		protected int hpbonus;
 		protected ItemType type;
+		public bool Equippable;
 		protected Ability usageAbility;
 
 		public Item(int itemid)
@@ -33,6 +34,7 @@ namespace SimpleGame.Logic
 			this.strengthbonus = int.Parse(ItemStats.GetStat(itemid, "strengthbonus"));
 			this.hpbonus = int.Parse(ItemStats.GetStat(itemid, "hpbonus"));
 			this.type = this.setItemType(itemid);
+			this.Equippable = false;
 		}
 		public Item(SerializationInfo info, StreamingContext ctxt)
 		{

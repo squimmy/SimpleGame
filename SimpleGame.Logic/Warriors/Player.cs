@@ -40,7 +40,7 @@ namespace SimpleGame.Logic
 			this.baseDamageReduction = 0;
 
 			this.unique = true;
-			this.primaryAbility = new UnarmedAttack(this, DamageType.Crush, 0, 0, null);
+			this.primaryAbility = new UnarmedAttack(this, DamageType.Crushing, 0, 0, null);
 
 			//adding some items to debug inventory controls:
 			for (int i = 1; i < 7; i++)
@@ -126,7 +126,7 @@ namespace SimpleGame.Logic
 
 		protected override int damageReduction
 		{
-			get { return this.baseDamageReduction + this.equipment.Protection(DamageType.Crush); }
+			get { return this.baseDamageReduction + this.equipment.Protection(DamageType.Crushing); }
 			
 		}
 

@@ -39,17 +39,17 @@ namespace SimpleGame.Logic
 		{
 			switch (damageType)
 			{
-				case DamageType.Cut:
+				case DamageType.Cutting:
 					if (damageDealt > 20)
 						return "eviscerate";
 					if (damageDealt > 10)
 						return "slash";
 					return "hit";
-				case DamageType.Stab:
+				case DamageType.Stabbing:
 					if (damageDealt > 15)
 						return "impale";
 					return "hit";
-				case DamageType.Crush:
+				case DamageType.Crushing:
 					if (damageDealt > 20)
 						return "crush";
 					if (damageDealt > 10)

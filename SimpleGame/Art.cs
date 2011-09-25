@@ -32,9 +32,9 @@ namespace SimpleGame
 		{
 			switch (type)
 			{
-				case SimpleGame.Logic.DamageType.Cut: return SimpleGame.Properties.Resources.cut;
-				case SimpleGame.Logic.DamageType.Stab: return SimpleGame.Properties.Resources.stab;
-				case SimpleGame.Logic.DamageType.Crush: return SimpleGame.Properties.Resources.crush;
+				case SimpleGame.Logic.DamageType.Cutting: return SimpleGame.Properties.Resources.cut;
+				case SimpleGame.Logic.DamageType.Stabbing: return SimpleGame.Properties.Resources.stab;
+				case SimpleGame.Logic.DamageType.Crushing: return SimpleGame.Properties.Resources.crush;
 				case SimpleGame.Logic.DamageType.Fire: return SimpleGame.Properties.Resources.fire;
 				case SimpleGame.Logic.DamageType.Ice: return SimpleGame.Properties.Resources.ice;
 				case SimpleGame.Logic.DamageType.Electricity: return SimpleGame.Properties.Resources.electricity;
