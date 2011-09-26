@@ -104,10 +104,19 @@ namespace SimpleGame
 		}
 		private void updateSelectedItemInfo()
 		{
+			if (!this.SelectedItemIsVisible())
+			{
+				this.selectedItem = null;
+			}
 			if (this.selectedItem != null)
+			{
 				this.selectedItemInfo.ShowItemInfo(selectedItem, player);
+			}
 			else
+			{
 				this.selectedItemInfo.ClearPanel();
+			}
+			
 		}
 
 		private void characterImage_Click(object sender, EventArgs e)
@@ -273,6 +282,7 @@ namespace SimpleGame
 
 		private void deselectAllEquipment()
 		{
+			this.selection = null;
 			this.clearEquipmentHighlighting();
 			this.updateSelectedEquipmentInfo();
 		}
@@ -504,6 +514,7 @@ namespace SimpleGame
 				default:
 					break;
 			}
+			this.updateSelectedItemInfo();
 		}
 		private void matchInventoryFilterToEquipmentSelection(EquipmentSlot location)
 		{
@@ -548,6 +559,10 @@ namespace SimpleGame
 			this.attackDefenseInfo.UpdateLabels();
 			this.updateSelectedEquipmentInfo();
 			this.updateSelectedItemInfo();
+		}
+		private bool SelectedItemIsVisible()
+		{
+			return inventoryToDisplay.Contains(selectedItem);
 		}
 	}
 }
