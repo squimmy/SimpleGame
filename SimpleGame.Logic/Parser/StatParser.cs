@@ -53,6 +53,16 @@ namespace SimpleGame.Logic
 				default:		return ArmourLocation.Torso;
 			}
 		}
+		public static WeaponSize ParseWeaponSize(string text)
+		{
+			switch (text)
+			{
+				case "small": return WeaponSize.Small;
+				case "medium": return WeaponSize.Medium;
+				case "large": return WeaponSize.Large;
+				default: return WeaponSize.Medium;
+			}
+		}
 
 		public static bool IDExists(int entityid, string statsfile)
 		{

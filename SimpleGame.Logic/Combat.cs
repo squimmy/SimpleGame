@@ -103,7 +103,7 @@ namespace SimpleGame.Logic
 		}
 		public static double ProtectionMultiplierValue(int protectionValue)
 		{
-			return Math.Pow(0.933, (double)protectionValue);
+			return Math.Pow(0.96594, (double)protectionValue);
 		}
 		public static int ProtectionPercentage(int protectionValue)
 		{

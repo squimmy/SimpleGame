@@ -63,7 +63,7 @@
     <Compile Include="InventoryExtensions.cs" />
     <Compile Include="Items\Armour.cs" />
     <Compile Include="Items\Consumable.cs" />
-    <Compile Include="Items\IEquipable.cs" />
+    <Compile Include="Items\Equipable.cs" />
     <Compile Include="Items\Item.cs" />
     <Compile Include="Items\ItemGenerator.cs" />
     <Compile Include="Parser\AbilityStats.cs" />

@@ -7,14 +7,13 @@ using System.Runtime.Serialization;
 namespace SimpleGame.Logic
 {
 	[Serializable]
-	public class Weapon : Item, ISerializable, IEquipable
+	public class Weapon : Equipable, ISerializable
 	{
 		private int damage;
 		private DamageType damageType;
 		private ItemAbility proc;
 		private WeaponSize size;
-		private Dictionary<DamageType, int> protection;
-		private Dictionary<Stat, int> bonus;
+
 
 		public Weapon(int itemid)
 			: base(itemid)
@@ -22,16 +21,7 @@ namespace SimpleGame.Logic
 			this.damage = int.Parse(ItemStats.GetStat(itemid, "damage"));
 			this.damageType = StatParser.ParseDamageType(ItemStats.GetStat(itemid, "damagetype"));
 			this.proc = null;
-			protection = new Dictionary<DamageType, int>();
-			foreach (DamageType type in Enum.GetValues(typeof(DamageType)))
-			{
-				protection[type] = int.Parse(ItemStats.GetStat(itemid, type.ToString().ToLower()));
-			}
-			bonus = new Dictionary<Stat, int>();
-			foreach (Stat stat in Enum.GetValues(typeof(Stat)))
-			{
-				bonus[stat] = int.Parse(ItemStats.GetStat(itemid, type.ToString().ToLower() + "bonus"));
-			}
+			size = StatParser.ParseWeaponSize(ItemStats.GetStat(itemid, "size"));
 			this.Equippable = true;
 		}
 
@@ -48,17 +38,16 @@ namespace SimpleGame.Logic
 			this.damage = 0;
 			this.type = ItemType.Weapon;
 			this.damageType = DamageType.Crushing;
-			this.protection = new Dictionary<DamageType, int>();
+			protection = new Dictionary<DamageType, int>();
 			foreach (DamageType type in Enum.GetValues(typeof(DamageType)))
 			{
 				protection[type] = 0;
 			}
-			this.bonus = new Dictionary<Stat, int>();
+			bonus = new Dictionary<Stat, int>();
 			foreach (Stat stat in Enum.GetValues(typeof(Stat)))
 			{
 				bonus[stat] = 0;
 			}
-
 		}
 
 		public Weapon(SerializationInfo info, StreamingContext ctxt)
@@ -94,14 +83,6 @@ namespace SimpleGame.Logic
 		public WeaponSize Size
 		{
 			get { return size; }
-		}
-		public Dictionary<DamageType, int> Protection
-		{
-			get { return protection; }
-		}
-		public Dictionary<Stat, int> Bonus
-		{
-			get { return bonus; }
 		}
 	}
 }

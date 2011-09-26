@@ -15,7 +15,7 @@ namespace Test
 			int damage = 100;
 			int protectionValue = 10;
 			int actual = SimpleGame.Logic.Combat.ApplyDamageReduction(damage, protectionValue);
-			int expected = 50;
+			int expected = 25;
 			Assert.AreEqual(expected, actual);
 		}
 
@@ -23,7 +23,7 @@ namespace Test
 		public void TestRandomDamageReduction()
 		{
 			int damage = 1;
-			int protectionValue = 10;
+			int protectionValue = 20;
 			int count = 0;
 			for (int i = 0; i < 1000; i++)
 			{

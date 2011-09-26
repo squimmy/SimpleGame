@@ -61,9 +61,10 @@ namespace SimpleGame
 		private void generateItemDetails()
 		{
 			if (this.item.Type == Logic.ItemType.Weapon)
-				addWeaponDetails();
-			if (this.item.Type == Logic.ItemType.Weapon || this.item.Type == Logic.ItemType.Armour)
-				addEquippableDetails();
+				this.detailsPanel.Controls.AddRange(getWeaponDetails(item as Logic.Weapon).ToArray());
+			if (this.item.Equippable)
+				this.detailsPanel.Controls.AddRange(getEquippableDetails(item as Logic.Equipable).ToArray());
+			
 
 			Button moreInfo = new Button()
 			{ Text = "More Info" };
@@ -71,46 +72,49 @@ namespace SimpleGame
 			this.buttonPanel.Controls.Add(moreInfo, 0, 0);
 
 			if (item.Equippable && player != null)
-				this.addEquippableButtons();
+			this.addEquippableButtons();
 		}
-		private void addEquippableDetails()
+		private List<Label> getEquippableDetails(Logic.Equipable equipment)
 		{
-			Logic.IEquipable equipment = this.item as Logic.IEquipable;
 			if (equipment == null)
-				return;
-
+				return null;
+			List<Label> labels = new List<Label>();
 			foreach (Logic.Stat stat in Enum.GetValues(typeof(Logic.Stat)))
 			{
 				if (equipment.Bonus[stat] != 0)
 				{
 					Label bonus = new Label() { Text = string.Format("{0} Bonus: {1}", stat.ToString(), equipment.Bonus[stat]) };
 					bonus.Dock = DockStyle.Fill;
-					this.detailsPanel.Controls.Add(bonus);
+					labels.Add(bonus);
 				}
 			}
-
+			
 			foreach (Logic.DamageType type in Enum.GetValues(typeof(Logic.DamageType)))
 			{
 				if (equipment.Protection[type] != 0)
 				{
 					Label protection = new Label() { Text = string.Format("{0} Resistance: {1}", type.ToString(), equipment.Protection[type]) };
 					protection.Dock = DockStyle.Fill;
-					this.detailsPanel.Controls.Add(protection);
+					labels.Add(protection);
 				}
 			}
-		}
-		private void addWeaponDetails()
-		{
-			Logic.Weapon weapon = this.item as Logic.Weapon;
-			if (weapon == null)
-				return;
 
+			return labels;
+		}
+		private List<Label> getWeaponDetails(Logic.Weapon weapon)
+		{
+			if (weapon == null)
+				return null;
+
+			List<Label> labels = new List<Label>();
 			Label damage = new Label() { Text = string.Format("Damage: {0} ({1})", weapon.Damage, weapon.DamageType) };
 			damage.Dock = DockStyle.Fill;
+			labels.Add(damage);
 			Label speed = new Label() { Text = string.Format("Speed: {0}", weapon.Speed) };
 			speed.Dock = DockStyle.Fill;
-			this.detailsPanel.Controls.Add(damage);
-			this.detailsPanel.Controls.Add(speed);
+			labels.Add(speed);
+
+			return labels;
 		}
 		private void addEquippableButtons()
 		{
@@ -137,6 +141,14 @@ namespace SimpleGame
 			{
 				player.Equipment.EquipArmour(item as Logic.Armour);
 				this.ShowItemInfo();
+			}
+			if (item.Type == Logic.ItemType.Weapon)
+			{
+				Logic.Weapon weapon = item as Logic.Weapon;
+				if (weapon.Size != Logic.WeaponSize.Small)
+				{
+					player.Equipment.EquipRightHandWeapon(weapon);
+				}
 			}
 		}
 		private void unequipButtonClicked(object sender, EventArgs e)

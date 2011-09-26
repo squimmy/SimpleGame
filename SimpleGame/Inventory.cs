@@ -18,7 +18,6 @@ namespace SimpleGame
 		private List<InventoryEntry> inventoryEntries;
 		private Dictionary<EquipmentSlot, InventoryEntry> equippedItems;
 		private Logic.Player player;
-		private Logic.Item selectedEquipment;
 		private Logic.Item selectedItem;
 		private Rectangle headLocation;
 		private Rectangle torsoLocation1;
@@ -98,8 +97,8 @@ namespace SimpleGame
 		}
 		private void updateSelectedEquipmentInfo()
 		{
-			if (this.selectedEquipment != null)
-				this.selectedEquipmentInfo.ShowItemInfo(selectedEquipment, player);
+			if (this.selection != null)
+				this.selectedEquipmentInfo.ShowItemInfo(getLocationItem(this.selection), player);
 			else
 				this.selectedEquipmentInfo.ClearPanel();
 		}
@@ -250,7 +249,6 @@ namespace SimpleGame
 		private void selectLocation(EquipmentSlot location)
 		{
 			this.selection = location;
-			this.selectedEquipment = getLocationItem(location);
 
 			this.clearEquipmentHighlighting();
 			this.highlightSelection(location);
@@ -258,7 +256,7 @@ namespace SimpleGame
 
 			this.updateSelectedEquipmentInfo();
 		}
-		private Logic.Item getLocationItem(EquipmentSlot location)
+		private Logic.Item getLocationItem(EquipmentSlot? location)
 		{
 			switch (location)
 			{
@@ -276,7 +274,6 @@ namespace SimpleGame
 		private void deselectAllEquipment()
 		{
 			this.clearEquipmentHighlighting();
-			this.selectedEquipment = null;
 			this.updateSelectedEquipmentInfo();
 		}
 		private void clearEquipmentHighlighting()
@@ -549,6 +546,8 @@ namespace SimpleGame
 		{
 			this.updateEquipmentIcons();
 			this.attackDefenseInfo.UpdateLabels();
+			this.updateSelectedEquipmentInfo();
+			this.updateSelectedItemInfo();
 		}
 	}
 }

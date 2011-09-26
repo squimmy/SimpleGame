@@ -7,24 +7,13 @@ using System.Runtime.Serialization;
 namespace SimpleGame.Logic
 {
 	[Serializable]
-	public class Armour : Item, ISerializable, IEquipable
+	public class Armour : Equipable, ISerializable
 	{
-		private Dictionary<DamageType, int> protection;
-		private Dictionary<Stat, int> bonus;
 		private ArmourLocation location;
 
 		public Armour(int itemid): base(itemid)
 		{
-			protection = new Dictionary<DamageType, int>();
-			foreach (DamageType type in Enum.GetValues(typeof(DamageType)))
-			{
-				protection[type] = int.Parse(ItemStats.GetStat(itemid, type.ToString().ToLower()));
-			}
-			bonus = new Dictionary<Stat, int>();
-			foreach (Stat stat in Enum.GetValues(typeof(Stat)))
-			{
-				bonus[stat] = int.Parse(ItemStats.GetStat(itemid, type.ToString().ToLower() + "bonus"));
-			}
+			
 			location = StatParser.ParseArmourLocation(ItemStats.GetStat(itemid, "location"));
 			this.Equippable = true;
 		}
@@ -90,15 +79,6 @@ namespace SimpleGame.Logic
 		{
 			base.GetObjectData(info, ctxt);
 			info.AddValue("protection", this.protection);
-		}
-
-		public Dictionary<DamageType, int> Protection
-		{
-			get { return protection; }
-		}
-		public Dictionary<Stat, int> Bonus
-		{
-			get { return bonus; }
 		}
 		public ArmourLocation Location
 		{
