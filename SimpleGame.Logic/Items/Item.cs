@@ -134,5 +134,10 @@ namespace SimpleGame.Logic
 		{
 			get { return type; }
 		}
+
+		public virtual List<ItemDetail> ShortDescription
+		{
+			get { return new List<ItemDetail>(); }
+		}
 	}
 }

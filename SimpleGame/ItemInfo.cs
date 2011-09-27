@@ -60,10 +60,7 @@ namespace SimpleGame
 
 		private void generateItemDetails()
 		{
-			if (this.item.Type == Logic.ItemType.Weapon)
-				this.detailsPanel.Controls.AddRange(getWeaponDetails(item as Logic.Weapon).ToArray());
-			if (this.item.Equippable)
-				this.detailsPanel.Controls.AddRange(getEquippableDetails(item as Logic.Equipable).ToArray());
+			this.detailsPanel.Controls.AddRange(getItemDetails(item).ToArray());
 			
 
 			Button moreInfo = new Button()
@@ -74,45 +71,17 @@ namespace SimpleGame
 			if (item.Equippable && player != null)
 			this.addEquippableButtons();
 		}
-		private List<Label> getEquippableDetails(Logic.Equipable equipment)
+		
+		private List<Label> getItemDetails(Logic.Item item)
 		{
-			if (equipment == null)
-				return null;
+			List<Logic.ItemDetail> details = item.ShortDescription;
 			List<Label> labels = new List<Label>();
-			foreach (Logic.Stat stat in Enum.GetValues(typeof(Logic.Stat)))
-			{
-				if (equipment.Bonus[stat] != 0)
-				{
-					Label bonus = new Label() { Text = string.Format("{0} Bonus: {1}", stat.ToString(), equipment.Bonus[stat]) };
-					bonus.Dock = DockStyle.Fill;
-					labels.Add(bonus);
-				}
-			}
-			
-			foreach (Logic.DamageType type in Enum.GetValues(typeof(Logic.DamageType)))
-			{
-				if (equipment.Protection[type] != 0)
-				{
-					Label protection = new Label() { Text = string.Format("{0} Resistance: {1}", type.ToString(), equipment.Protection[type]) };
-					protection.Dock = DockStyle.Fill;
-					labels.Add(protection);
-				}
-			}
 
-			return labels;
-		}
-		private List<Label> getWeaponDetails(Logic.Weapon weapon)
-		{
-			if (weapon == null)
-				return null;
-
-			List<Label> labels = new List<Label>();
-			Label damage = new Label() { Text = string.Format("Damage: {0} ({1})", weapon.Damage, weapon.DamageType) };
-			damage.Dock = DockStyle.Fill;
-			labels.Add(damage);
-			Label speed = new Label() { Text = string.Format("Speed: {0}", weapon.Speed) };
-			speed.Dock = DockStyle.Fill;
-			labels.Add(speed);
+			foreach (Logic.ItemDetail detail in details)
+			{
+				Label detaillabel = new Label() { Text = detail.text, Dock = DockStyle.Fill };
+				labels.Add(detaillabel);
+			}
 
 			return labels;
 		}

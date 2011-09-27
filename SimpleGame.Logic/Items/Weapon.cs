@@ -29,6 +29,7 @@ namespace SimpleGame.Logic
 		{
 			this.id = -1;
 			this.name = "Empty Handed";
+			this.Equippable = false;
 			this.weight = 0;
 			this.value = 0;
 			this.speed = 0;
@@ -84,5 +85,24 @@ namespace SimpleGame.Logic
 		{
 			get { return size; }
 		}
+		public override List<ItemDetail> ShortDescription
+		{
+			get
+			{
+				List<ItemDetail> description = new List<ItemDetail>();
+				ItemDetail damage;
+				damage.value = this.damage;
+				damage.text = string.Format("Damage: {0} ({1})", this.damage, this.damageType);
+				description.Add(damage);
+				ItemDetail speed;
+				speed.value = this.speed;
+				speed.text = string.Format("Speed: {0}", this.speed);
+				description.Add(speed);
+
+				description.AddRange(base.ShortDescription);
+
+				return description;
+			}
+		}		
 	}
 }

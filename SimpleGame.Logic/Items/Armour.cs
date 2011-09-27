@@ -20,6 +20,7 @@ namespace SimpleGame.Logic
 		public Armour(ArmourLocation location)
 		{
 			this.id = ((int)location * -1) - 2;
+			this.Equippable = false;
 			this.weight = 0;
 			this.value = 0;
 			this.speed = 0;
